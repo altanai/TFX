@@ -1,0 +1,8 @@
+node_modules
+.DS_Store
+npm-debug.log
+WebRTC.pem
+index2.html
+simplewebrtc.js
+socketioconnection.js
+webrtc.js
