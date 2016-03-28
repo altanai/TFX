@@ -2,3 +2,13 @@ node_modules
 *.bundle.js
 socket.io.js
 latest-v2.js
+tfxscripts/simplewebrtc.bundle.js
+tfxscripts/backupSimpleWebrtc.bundle.js
+peer.js
+unittest.js
+build.js
+server.js
+simplewebrtc.js
+socketioconnection.js
+webrtc.js
+scripts/presentation.js

@@ -1,4 +1,11 @@
 {
+    "globals": {
+        "$":false,
+        "jquery": true,
+        "angular":false,
+        "SimpleWebRTC":false,
+        "peer":false
+    },
     "asi": false,
     "expr": true,
     "loopfunc": true,
@@ -12,6 +19,7 @@
     "indent": 4,
     "latedef": true,
     "newcap": true,
+
     "predef": [
         "require",
         "__dirname",
