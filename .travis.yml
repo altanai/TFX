@@ -19,5 +19,5 @@ after_failure:
   - for file in *.log; do echo $file; echo "======================"; cat $file; done || true
 
 notifications:
-  email:
+  email: tara181989@gmail.com
   - 
