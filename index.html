@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">Logo</a>
+      <a class="navbar-brand" href="#">TFX WebRTC</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -37,40 +37,55 @@
   
 <div class="container-fluid text-center">    
   <div class="row content">
+    <!--  
     <div class="col-sm-2 sidenav">
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
       <p><a href="#">Link</a></p>
-    </div>
-    <div class="col-sm-8 text-left"> 
+    </div> -->
+    <div  class="col-sm-8 text-left row content"> 
 
         <p id="subTitle"></p>
+
         <form id="createRoom">
-            <input id="sessionInput"/>
-            <button type="submit">Create it!</button>
+            <div class="form-group form-inline">
+                <label for="sessionInput">Enter the Session Name :</label>
+                <input id="sessionInput" type="text" class="form-control">
+                <button type="submit" class="btn-primary">Create it!</button>
+            </div>    
         </form>
 
       <hr>
-        <div class="videoContainer">
-            <video id="localVideo" style="height: 100%;" oncontextmenu="return false;"></video>
+
+        <div class="col-sm-4 videoContainer">
+            <video id="localVideo" oncontextmenu="return false;"></video>
             <div id="localVolume" class="volume_bar"></div>
         </div>
-        <div id="remotes"></div>
+
+        <div id="remotes" class ="col-sm-4"></div>
     </div>
-    <div class="col-sm-2 sidenav">
+
+    <div id="MessageBox" class="col-sm-4 sidenav">
       <div class="well">
         <input id="fileInput" type="file" name="File">
       </div>
+
       <div class="well">
-          <div id="messages" style="height: 200px;"></div>
-          <input id="messageInput" type="text"  name="Message">
+            <div id="messages" style="height: 200px;"></div>
+          
+            <div class="form-group">
+              <label for="messageInput">Chat:</label>
+              <input id="messageInput" name="Message"type="text" class="form-control">
+            </div>
+
       </div>
     </div>
+  
   </div>
 </div>
 
 <footer class="container-fluid text-center bottomBar" hidden>
-  <p>Footer Text</p>
+  <p>WebRTC comm module- 2016</p>
 </footer>
 
 </body>
