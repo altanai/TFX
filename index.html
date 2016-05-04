@@ -1,0 +1,222 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TangoFX</title>
+    <link href="minified/vendor.css" rel="stylesheet">
+    <link href="minified/customStyle.css" rel="stylesheet">
+    <script src="minified/vendor.js"></script>
+  </head>
+
+  <body >
+ 
+  <div id="tangofx" style="background-color:black"></div>
+
+  	<nav class="navbar navbar-default navbar-fixed-top">
+  		<div class="container-fluid">
+  			 
+          <div id="roomInputBoxDiv" hidden="true">
+            <form class="navbar-form navbar-left" ng-show="chatRoom == ''">
+              <div class="form-group">
+                <input type="text" class="form-control tango-input" ng-model="chatRoomModel" placeholder="Insert session name here" maxlength="256">
+              </div>
+              <button type="submit" class="btn btn-default tango-btn" ng-click="joinClickHandler()">Tango Now</button>
+            </form>
+          </div>
+
+          <p id="roonnameDiv" ng-style="myStyle" hidden="true"> 
+             Session : <span id="roonnameSpan" class="navbar-text-green"> </span></p>
+
+          <!-- will be at center - tools symbols -->
+          <ul id="tools" class="nav navbar-nav" ng-show="chatRoom != ''">
+            <li>
+              <a href="#" id="manuals" title="Manuals" class="tango-nav-btn help_btn"></a>
+            </li>
+            <li>
+              <a href="#" id="videomute" title="Mute video" class="tango-nav-btn camera_btn"></a>
+            </li>
+            <li>
+              <a href="#" id="voicemute" title="Audio Mute" class="tango-nav-btn audio_btn"></a>
+            </li>
+
+            <li>
+              <a ng-click="logoffHandler()" title="Log out of session" class="tango-nav-btn logoff_btn"></a>
+            </li>
+          </ul>
+
+          <!-- will float to right - status symbols -->
+           <ul id="status" class="nav navbar-nav">
+            <li>
+                <a href="#" id="media_settings_btn" title="MediaSettings" class="tango-nav-btn settings_btn"></a>
+            </li>
+            <li>
+                <a href="#" id="network" title="Network Strength" class="tango-nav-btn network_btn_undetected"></a>
+            </li>
+          </ul>
+          <!-- tooltip based network suggestions --> 
+          <div id="tooltipnetworknotifications" networktooltip="" hidden="true"> </div>
+
+          <!-- tooltip based network suggestions --> 
+          <div id="tooltipwebrtcnotifications" webrtctooltip="" hidden="true"> </div>
+
+          <!-- tooltip based room notificatoion --> 
+          <div id="tooltiproomnotifications" bubbletooltip="" hidden="true" > </div>
+
+      </div>
+   	</nav>
+    
+    <canvas id="myCanvas"></canvas>
+
+    <div class="home_outer">
+      <div class="home_middle">
+
+          <div id="notificationsDiv" class="home_inner" hidden="true">
+            <img id="notificationsimage" src="img/checking.gif" class="pull-left">
+                <p id="notifications" class="notificationStyle">
+                        Connceting ...
+                 </p>
+                <div class="navbar-share" id="shareDiv" hidden="true"></div>
+          </div>
+      </div>
+    </div>
+    
+    <div id="videoContent">
+      <div id="localArea" align="right">
+        
+        <div id="remotes"></div>
+        
+        <div id="localVideoContainer" class="videoContainer">
+              <video id="localVideo"></video>
+        </div>
+          
+      </div>
+    </div>
+
+    <div id="choosemediapopup" title="Audio/Video Settings" style="display:none">
+       <div> Select Camera <br />
+         <select id="videodevices"> 
+          </select> 
+        </div>
+        <div> Select Mic <br />
+          <select id="audiodevices"> 
+          </select> 
+       </div>
+    </div>
+    
+    <!-- Template loader-->
+    <div class="container-fluid"  ui-view></div>
+	
+    <!-- soothing music -->
+    <!--<audio id="audio1" src="sound/waitingMusic.mp3" type="audio/mpeg" hidden="true" volume="0.5"></audio> -->
+
+    <!-- Logo-->
+    <div class="logo"><img src="icons/tfx_logo_droid.png"></div>
+
+    <!-- Connection Status-->
+    <div id="connectionnotification" class="connectionnotification">...</div>
+
+    <script src="js/broplug.js"></script>
+    <link href="css/jquery.share.css" rel="stylesheet">
+
+  </body>
+</html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">TFX WebRTC</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Projects</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <!--  
+    <div class="col-sm-2 sidenav">
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+      <p><a href="#">Link</a></p>
+    </div> -->
+    <div  class="col-sm-8 text-left row content"> 
+
+        <p id="subTitle"></p>
+
+        <form id="createRoom">
+            <div class="form-group form-inline">
+                <label for="sessionInput">Enter the Session Name :</label>
+                <input id="sessionInput" type="text" class="form-control">
+                <button type="submit" class="btn-primary">Create it!</button>
+            </div>    
+        </form>
+
+      <hr>
+
+        <div class="col-sm-4 videoContainer">
+            <video id="localVideo" oncontextmenu="return false;"></video>
+            <div id="localVolume" class="volume_bar"></div>
+        </div>
+
+        <div id="remotes" class ="col-sm-4"></div>
+    </div>
+
+    <div id="MessageBox" class="col-sm-4 sidenav">
+      <div class="well">
+        <input id="fileInput" type="file" name="File">
+      </div>
+
+      <div class="well">
+            <div id="messages" style="height: 200px;"></div>
+          
+            <div class="form-group">
+              <label for="messageInput">Chat:</label>
+              <input id="messageInput" name="Message"type="text" class="form-control">
+            </div>
+
+      </div>
+    </div>
+  
+  </div>
+</div>
+
+<footer class="container-fluid text-center bottomBar" hidden>
+  <p>WebRTC comm module- 2016</p>
+</footer>
+
+</body>
+
+    <script src="tfxscripts/simplewebrtc.bundle.js"></script>
+    <script src="tfxscripts/broplug.js"></script>
+</html>
+>>>>>>> 6b1ba1df5f97ab2df90e374c26e0a4de58c57da3
