@@ -1,0 +1,107 @@
+<html>
+<head>
+</head>
+
+<body>
+Join the TangoFX Room : <div id="roomname"></div>
+<br/><br/>
+Your browser is : <div id="browsername"></div>
+<br/><br/>
+<div id="exetnsioninfo"></div><a rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/afbomhocbhkipjmmlpbjceldmpceicgl">
+TangoFX</a>
+
+<script>
+/*to test this page locally 
+run the page on chrome at 
+file:///home/altanaibisht/Dropbox/Work/tangofxsessionsshare.html?broplugid=afbomhocbhkipjmmlpbjceldmpceicgl=iu%20wci
+
+to test this page on tfx amazon ec2 server 
+run the page on 
+https://tfxserver.above-inc.com/static/tangofxsessionsshare.html?broplugid=afbomhocbhkipjmmlpbjceldmpceicgl&roomname=ngre
+*/
+
+//find out first parameter ie broplug ID 
+var locate = window.location;
+//console.log(locate.search);
+
+function delineate(str){
+    var theleft = str.indexOf("=") + 1;
+    var theright = str.lastIndexOf("&");
+    return(str.substring(theleft, theright));
+}
+//console.log("BroplugId :" +delineate(locate.search));
+
+//find out second paremeters ie rooomname 
+function delineate2(str){
+    var point = str.lastIndexOf("=");
+/*    var n1=str.substring(point+1,str.length);
+    
+    if(n1.indexOf('%20')>0)
+        n1=n1.replace('%20',' ');
+    
+    return n1;*/
+    return str.substring(point+1,str.length);
+}
+
+document.getElementById("roomname").innerHTML="tfx:"+delineate2(locate.search)+":";
+
+//------------------------------------------------------------------------
+var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+var isFirefox = typeof InstallTrigger !== 'undefined';
+var isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+var isChrome = !!window.chrome && !isOpera;             
+var isIE = /*@cc_on!@*/false || !!document.documentMode;   
+
+if(isChrome)document.getElementById("browsername").innerHTML="Chrome";
+else if(isFirefox)document.getElementById("browsername").innerHTML="Firefox, please use this link in chrome ";
+else if(isSafari)document.getElementById("browsername").innerHTML="Safari, please use this link in chrome ";
+else if(isIE)document.getElementById("browsername").innerHTML="Internet Explorer, please use this link in chrome ";
+else if(isOpera)document.getElementById("browsername").innerHTML="Opera, please use this link in chrome ";
+else document.getElementById("browsername").innerHTML="unknown browser , Please use this link in chrome ";
+
+
+function detectChromeExtension(extensionId, accesibleResource, callback){
+    if (typeof(chrome) !== 'undefined'){
+        var xmlHttp = new XMLHttpRequest(),
+            testUrl = 'chrome-extension://' +extensionId +'/' +accesibleResource;
+        xmlHttp.open('HEAD', testUrl, true);
+        xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xmlHttp.timeout = 1000;
+
+        xmlHttp.onreadystatechange = function() {
+            if (xmlHttp.readyState == 4 && typeof(callback) == 'function') {
+                if (xmlHttp.status == 200) {
+                    callback.call(this, true);
+                } else {
+                    callback.call(this, false);
+                }
+            }
+        }        
+        xmlHttp.ontimeout = function() {
+            if (typeof(callback) == 'function')
+                callback.call(this, false);
+        }        
+        xmlHttp.send();
+    } else {
+        if (typeof(callback) == 'function')
+            callback.call(this, false);
+    }    
+}
+
+function myCallbackFunction(extensionExists) {
+    if (extensionExists) {
+        document.getElementById("exetnsioninfo").innerHTML="TaangoFX extension installed ";        
+    } else {
+    	var exetnsionid=delineate(locate.search);
+        document.getElementById("exetnsioninfo").innerHTML='Install TangoFX extension ';
+    }
+}
+
+/* check whether TangoFX is installed already or not */
+if(isChrome){
+    detectChromeExtension(broplugid, 'environment.js', myCallbackFunction);
+}
+</script>
+
+</body>
+</html>

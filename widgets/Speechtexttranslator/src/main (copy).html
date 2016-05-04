@@ -1,0 +1,65 @@
+<html>
+<head>
+<!-- jquerry -->
+<script src="../../../../js/jquery/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../../../../css/jquery-ui.min.css"/>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+
+</head>
+
+<body>
+
+
+<div class="actionarea">
+
+	<br/><br/>
+	
+	<div class="compact marquee" id="div_language">
+      <select id="select_language" ></select>
+          &nbsp;&nbsp; 
+      <select id="select_dialect"></select>
+    </div>
+
+    <br/><br/>
+
+	<div id="messages" class="message_area">
+
+		<table>
+		<tr>
+			<td> Orignal Message </td>
+			<td> Translated Message</td>
+		</tr>
+		<tr>
+			<td>
+				<textarea disabled class="messageHistory" rows="20" cols="40" id="MessageHistoryBox"></textarea>
+			</td>
+			<td>
+				<textarea disabled class="messageHistory" rows="20" cols="40" id="MessageLangHistoryBox"></textarea>
+			</td>
+		</tr>
+		</table>
+
+	    <br/> <br/>
+
+		<div id="startrecognition" class ="buttonstyle">
+		  <a href="#" id="start_button" >Dictate</a>
+		  <a href="#" id="send_button" >Send</a>
+		</div>
+		
+		<br/><br/>
+
+		<div id="results" style="textboxstyle">
+		  <span id="final_span" class="final"></span>
+		  <span id="interim_span" class="interim"></span>
+		</div>
+
+	    <!-- <input type ="text" id="MessageBox" size="120"/> -->
+		<!--<button id="SendMessage" type="button" class="btn btn-default btn-sm glyphicon glyphicon-comment"></button> -->
+	</div>
+
+</div>
+
+
+</body>
+<script src="../js/sync.js" type="text/javascript"></script>
+</html>
