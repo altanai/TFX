@@ -1,0 +1,24 @@
+<div class="large-12 columns" >
+	<div class="row">
+
+	    <!-- Widget Loader -->
+		<div id="widget_loader">
+			<!--<iframe ng-repeat="widget in widgets" src="{{'widgets/'+widget.path+'/index.html'}}"></iframe>-->
+		</div>
+
+		<!-- Widget Panel -->
+		<div class="widget-column">
+			<div class="widget-container">
+				<ul class="nav" style="padding-top: 50px;">
+					<li ng-repeat="widget in widgets">
+						<a ng-click="linkClickHandler(widget, $index)" 
+						class="{{widget.path}} {{currentWidget == $index ? widget.path+'_selected' : ''}}"
+						title="{{widget.title}}"
+						></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+</div>
