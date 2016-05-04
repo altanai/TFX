@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "tfx_module",
   "version": "1.0.0",
   "description": "tfx webrtc agent as a module",
@@ -24,4 +25,56 @@
   },
   "author": "altanai <tara181989@gmail.com>",
   "license": "MIT"
+=======
+  "name": "webrtc-tfx",
+  "version": "1.1.1",
+  "description": "webrtc using simplewebrtc , broplug from tfx , socketio , websockets ",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "filetransfer": "^2.0.4",
+    "localmedia": "^2.0.0",
+    "rtcpeerconnection": "^4.0.0",
+    "webrtcsupport": "^2.2.0",
+    "wildemitter": "1.x",
+    "socket.io-client": "1.3.7",
+    "attachmediastream": "^1.3.5",
+    "mockconsole": "0.0.1"
+  },
+  "devDependencies": {
+    "browserify": "2.22.0",
+    "chromedriver": "^2.16.0",
+    "express": "3.x.x",
+    "precommit-hook": "0.3.x",
+    "request": "",
+    "selenium-webdriver": "^2.46.1",
+    "tape": "^4.0.0",
+    "testling": "^1.7.1",
+    "travis-multirunner": "^3.0.0",
+    "uglify-js": "2.3.6"
+  },
+
+  "scripts": {
+    "start": "node server.js",
+    "test-travis": "test/run-selenium",
+    "updateLatest": "./scripts/updateLatest.sh"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:altanai/TFX.git"
+  },
+  "keywords": [
+    "webrtc",
+    "tfx"
+  ],
+  "author": "altanai",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/altanai/TFX/issues"
+  },
+  "homepage": "https://github.com/altanai/TFX"
+>>>>>>> 6b1ba1df5f97ab2df90e374c26e0a4de58c57da3
 }
