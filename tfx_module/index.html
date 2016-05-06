@@ -18,8 +18,15 @@
 
   	<nav id="upperNav" class="navbar navbar-default navbar-fixed-top">
 
-          <p id="roonnameDiv" ng-style="myStyle" hidden="true"> 
+          <p id="roonnameDiv" hidden="true"> 
              Session : <span id="roonnameSpan" class="navbar-text-green"> </span></p>
+
+          <p id="roomnameInputDiv"  hidden="true">
+
+              <div class='form-group'><input type='text' id="roomInputBox" class='form-control tango-input' placeholder='Insert session name here' maxlength='256'></div>
+              <button type='submit' class='btn btn-default tango-btn' onclick='TFXcreateroom("roomInputBox")'>Tango Now</button>"+
+
+          </p>
 
           <!-- will be at center - tools symbols -->
           <ul id="tools" class="nav navbar-nav">

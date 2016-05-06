@@ -176,10 +176,8 @@ webrtc.on('readyToCall', function () {
   console.log(" readyToCall : connection established with server --- ");
   console.log(webrtc.webrtc.isAudioEnabled);
   console.log(webrtc.webrtc.isVideoEnabled);
-  $("#notificationsDiv").html("  <form class='navbar-form navbar-left' >"+ 
-              "<div class='form-group'><input type='text' class='form-control tango-input' placeholder='Insert session name here' maxlength='256'></div>"+
-              "<button type='submit' class='btn btn-default tango-btn' onclick='TFXjoinroom'>Tango Now</button>"+
-            "</form>");
+  $("#notificationsDiv").html(" connected to Server ");
+  $("#roomnameInputDiv").show();
   showtooltip(tooltiproomnotifications , "bubbletooltip" , "Enter session name here");
 });
 
@@ -273,7 +271,7 @@ webrtc.on('videoAdded', function (video, peer) {
 
       callflag=1;		//call was established sucessfully between 2 particiapnats  
       //send both video for caanvas to show local on side screen and remote video on main canvas
-      resizeCanvas(document.getElementById("localVideo"),video);
+      resizeTFX(document.getElementById("localVideo"),video);
   	}
 });
 
@@ -283,7 +281,7 @@ webrtc.on('videoRemoved', function (video, peer) {
   if (remotes && el) {
       remotes.removeChild(el);
 
-    resizeCanvas(document.getElementById("localVideo"),null);
+    resizeTFX(document.getElementById("localVideo"),null);
       //clear the activity on frames . so that when partner joins he has fresh frames 
       //clearFrames();
   }
@@ -291,23 +289,25 @@ webrtc.on('videoRemoved', function (video, peer) {
 
 
 function showDiv(name){
+  if(document.getElementById(name))
   document.getElementById(name).removeAttribute("hidden");
 }
 
 function hideDiv(name){
+  if(document.getElementById(name))
   document.getElementById(name).hidden = true;
 }
 
-	//setting the media paremeteres
-	document.getElementById('videomute').value="unmuted";
-	document.getElementById('voicemute').value="unmuted";
-	//document.getElementById("remotes").value="muted";
+//setting the media paremeteres
+document.getElementById('videomute').value="unmuted";
+document.getElementById('voicemute').value="unmuted";
+//document.getElementById("remotes").value="muted";
 
 
-  function setRoom(name) {
-	  document.title = "TangoFX Session "+ room;
-	  $('body').addClass('active');
-  }
+function setRoom(name) {
+  document.title = "TangoFX Session "+ room;
+  $('body').addClass('active');
+}
 
 	function checkmembersCount(){
 

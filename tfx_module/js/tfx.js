@@ -23,13 +23,27 @@ var TFXvoiceoff , TFXvoiceon , TFXvideooff , TFXvideoon , TFXclose ;
     childvideo.play();
   }
 
+/*
+*function to create a room
+*/
+TFXcreateroom=function(roomInputBox){
+  alert("TFXcreateroom");
+  var roomVal=$("#roomInputBox").val();
+  var url=window.location+'?roomname='+room;
+  console.info(roomVal);
+  webrtc.joinRoom(roomVal);
+  console.info(" TFX Create Room ", url);
+  resizeTFX(document.getElementById("localVideo"),null);
+}
 
 /*
-*function to join /create a room
+*function to join a room
 */
 TFXjoinroom=function(){
 	room = location.search.substring(1);
 	localStorage.setItem("session", "active");
+
+  console.info(" TFX Join Room ", room);
 
 	if (room){
 		  webrtc.joinRoom(room);
@@ -38,10 +52,11 @@ TFXjoinroom=function(){
 		  //console.log('gapi.client loaded.');
 		  //shortenURL(url);
 		  //});
-	} 
+	} else{
+      webrtc.joinRoom(room);
+  }
 
-	membersCount=webrtc.webrtc.getPeers().length+1;
-	resizeCanvas(membersCount, document.getElementById("localVideo"),null);
+	resizeCanvas(document.getElementById("localVideo"),null);
 }
 
 

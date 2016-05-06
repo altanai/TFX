@@ -121,7 +121,7 @@ function switchVideo(video1, video2 , h , w){
        console.log("remote members to canvas center");
        //stop the waiting music 
        // stopWaitingMusic();
-        if(v1!=null && v2!=null && v1!=v2){          
+        if(video1 && video2 && video1!=video2){          
             showDiv("localVideo");
         }
         $('#notifications').text('');

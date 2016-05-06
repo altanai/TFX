@@ -13,7 +13,7 @@
    
 var LoadshareButtons =  function sharebuttons(roomname){ 
     
-    DEBUG && console.log(" Social networking sharing options ");
+    console.log(" Social networking sharing options ");
 
     var document = window.document;
 
