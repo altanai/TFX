@@ -20,6 +20,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "start": "NODE_ENV=production node server.js"
   }
 }

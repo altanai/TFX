@@ -6,6 +6,9 @@ module.exports = function (server, config) {
     var io = socketIO.listen(server);
 
     io.sockets.on('connection', function (client) {
+
+        console.log(" a new connection ",client);
+
         client.resources = {
             screen: false,
             video: true,
@@ -14,6 +17,9 @@ module.exports = function (server, config) {
 
         // pass a message to another id
         client.on('message', function (details) {
+
+            console.log(" message from client ", details);
+
             if (!details) return;
 
             var otherClient = io.to(details.to);
@@ -66,13 +72,18 @@ module.exports = function (server, config) {
         // we don't want to pass "leave" directly because the
         // event type string of "socket end" gets passed too.
         client.on('disconnect', function () {
+            console.log(" client send disconnect "  );
             removeFeed();
         });
         client.on('leave', function () {
+            console.log(" client send leave");
             removeFeed();
         });
 
         client.on('create', function (name, cb) {
+
+            console.log(" client send create " , name );
+
             if (arguments.length == 2) {
                 cb = (typeof cb == 'function') ? cb : function () {};
                 name = name || uuid();
