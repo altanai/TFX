@@ -52,14 +52,14 @@
 
   /*------------canvas -------------------*/
 window.addEventListener('resize', function(){
-  resizeCanvas(null,null)
+  resizeTFX(null,null)
 }, false);
 var w , h; // height and width of video container 
 var i , j; // interval  for local and remote video
 
 
 function drawStuff(localvideo,remotevideo,height,width) {
-    console.log("drawStuff>>>> localvideo ", localvideo, " remotevideo", remotevideo, " height ", height , "width ", width);
+    
     var canvas = document.getElementById('myCanvas');
     var ctx =canvas.getContext("2d");
     var v = '';
@@ -76,6 +76,7 @@ function drawStuff(localvideo,remotevideo,height,width) {
       clearInterval(i);
       remotevideo.addEventListener('play', paintCanvas(remotevideo , ctx, width , height));
     }
+
 }
 
 function paintCanvas(v,c,w,h) {
@@ -128,13 +129,13 @@ function switchVideo(video1, video2 , h , w){
         $("#media_settings_btn").addClass("hidedisplay");
         hidetooltip(tooltiproomnotifications);
   } 
-
+  
   drawStuff(video1,video2,h,w);
 }
 
 
   //canvas resized and reset
-function resizeCanvas(video1,video2) {
+function resizeTFX(video1,video2) {
 
   var canvas = document.getElementById('myCanvas');
   h=window.innerHeight;

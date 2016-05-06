@@ -139,21 +139,6 @@ function chooseMedia(){
 	}
 } 
 
-/*----------------------detect OS -----------------*/
-var OSName="Unknown OS";
-if (navigator.appVersion.indexOf("Win")!=-1) OSName="Windows";
-if (navigator.appVersion.indexOf("Mac")!=-1) OSName="MacOS";
-if (navigator.appVersion.indexOf("X11")!=-1) OSName="UNIX";
-if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
-
-console.log('Your OS: '+OSName);
-
-
-
-
-/* --------------netwrok speed -------------------------------*/
-// speed test every 3 minutes interval
-// window.setInterval(MeasureConnectionSpeed, 120000);
 
 
 /* --------------webrtc -------------------------------*/
@@ -305,37 +290,6 @@ webrtc.on('videoRemoved', function (video, peer) {
 });
 
 
-// switch video from local area to widget area on members participlation 
-function switchVideo(memCount,v1,v2){
-  if(webrtc.webrtc.getPeers().length==0){
-      console.log("only one participant in session , show his video on canvas");
-      drawStuff(v1,v2,h,w);
-      hideDiv("localVideo");
-      $("#media_settings_btn").removeClass("hidedisplay");
-      
-      if (callflag==0){
-         showDiv("notificationsDiv");
-      }
-      else if(callflag==1){
-        showDiv("notificationsDiv"); 
-        $('#notifications').text('Your partner has left');
-      }
-  }else if(webrtc.webrtc.getPeers().length>0){
-       console.log("remote members to canvas center");
-       //stop the waiting music 
-       // stopWaitingMusic();
-        if(v1!=null && v2!=null && v1!=v2){          
-            drawStuff(v1,v2,h,w);
-            showDiv("localVideo");
-        }
-        $('#notifications').text('');
-        hideDiv("notificationsDiv");
-        $("#media_settings_btn").addClass("hidedisplay");
-        hidetooltip(tooltiproomnotifications);
-  } 
-}
-
-
 function showDiv(name){
   document.getElementById(name).removeAttribute("hidden");
 }
@@ -377,8 +331,6 @@ function hideDiv(name){
 	    showDiv("notificationsDiv"); 
 	   	$('#notifications').text('Your partner has left');
 		}
-
-		//console.log(membersCount);
 	}
 
 
