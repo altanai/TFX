@@ -36,16 +36,15 @@ gulp.task('vendorjs',function() {
         .pipe(gulp.dest(folderPath)); 
 });
 
-gulp.task('tfxjs',function() {
+gulp.task('customscripts',function() {
     console.log(" gulping main TFX scripts ");
     appJsList=[ 
-/*        "js/broplug.js",*/
-        "js/angularcontrol.js",
+        "js/share.js"
     ]; 
     console.log(appJsList);
     gulp.src(appJsList)
         .pipe(uglify())
-        .pipe(concat('tfx.js'))  
+        .pipe(concat('customScripts.js'))  
         .pipe(gulp.dest(folderPath)); 
 });
 
@@ -64,7 +63,9 @@ gulp.task('vendorcss',function() {
 gulp.task('customstyle',function() {
     console.log(" gulping custom stylesheets css  ");
     cssList=[
-      "css/style.css"
+      "css/jquery.share.css",
+      "css/control.css",
+      "css/widgetcustom.css"
     ];
     console.log(cssList);
     gulp.src(cssList)
@@ -88,5 +89,5 @@ gulp.task('default', gulpSequence(
     'vendorjs',
     'vendorcss',
     'customstyle',
-    'tfxjs'
+    'customscripts'
 )); 

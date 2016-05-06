@@ -9,21 +9,15 @@
 * Product : TFX
 */
 
-//use  window.load or document.ready to wait till the contents of window have loaded .
-// this is done in order to avoid jquerry not loading problems 
-var broPlugId = chrome.runtime.id;
+//var broPlugId = chrome.runtime.id;
+var broPlugId = "123456";
 
 //var room =  localStorage.getItem("room");
 var room = null;
 var membersCount=0;
 var callflag=0;
 var webrtc; // universal method for webrtc initiliiazation
-var TFXlocalVideo,TFXremoteVideo , TFXlocalStream , TFXremoteStream;
-var TFXvoiceoff , TFXvoiceon , TFXvideooff , TFXvideoon , TFXclose ; 
-var TFXjoinRoom , TFXPluginFunction , TFXPluginShareFunction ,TFXstats;
-var TFXgetRoom;
 
-var widgetarray=[];
 var currentframe='';
 var finalh , finalw ;
 var remoteVideoHandler;
@@ -108,7 +102,7 @@ function chooseMedia(){
 
         $("#choosemediapopup" ).dialog({
           resizable: false,
-		  width:'35%',
+		      width:'35%',
           modal: true,
           buttons: {
             "Save": function() {
@@ -155,39 +149,25 @@ if (navigator.appVersion.indexOf("Linux")!=-1) OSName="Linux";
 console.log('Your OS: '+OSName);
 
 
-/* --------------widgets -------------------------------*/
-  function readWidgetsjson(){
-    $.getJSON('../../widgetsmanisfest.json')
-    .done(function (data) {
-       	widgetarray = data;
-       	console.log(" widgestarray ", widgetarray, "||", widgetarray.length);
-	    for (x in widgetarray){
-	      	appendWidgetLeftPanel( widgetarray[x].id, widgetarray[x].title, 
-	        widgetarray[x].icon,  widgetarray[x].type);
-	    }
-    });
-  }
 
-/*------------------------------------------------*/
 
-//load from jspon widget file 
-	readWidgetsjson();
-
+/* --------------netwrok speed -------------------------------*/
 // speed test every 3 minutes interval
 // window.setInterval(MeasureConnectionSpeed, 120000);
 
+
+/* --------------webrtc -------------------------------*/
+
 webrtc = new SimpleWebRTC({
-    url: 'http://127.0.0.1:8888',
-    //url: 'http://192.168.0.119:8888',
+    url: 'https://localhost:8888',
     socketio: {/* 'force new connection':true*/},
     debug: true,
     localVideoEl: 'localVideo',
     remoteVideosEl: '',
     enableDataChannels: true,
-    autoRequestMedia: false,
+    autoRequestMedia: true,
     autoRemoveVideos: true,
-    adjustPeerVolume: false,
-    //adjustPeerVolume: true,
+    adjustPeerVolume: true,
     peerVolumeWhenSpeaking: 0.25,
     media: {
         video: true,
@@ -205,33 +185,34 @@ console.log(" Signalling server ", webrtc.config.url);
 console.log(" Socketio ", webrtc.config.socketio);
 console.log(" ICE  ", webrtc.webrtc.config.peerConnectionConfig.iceServers);
 
-membersCount=webrtc.webrtc.getPeers().length+1;
+//membersCount=webrtc.webrtc.getPeers().length+1;
 
 webrtc.on('readyToCall', function () {
-    console.log(" connection established with server --- ");
-    console.log(webrtc.webrtc.isAudioEnabled);
-    console.log(webrtc.webrtc.isVideoEnabled);
+  console.log(" readyToCall : connection established with server --- ");
+  console.log(webrtc.webrtc.isAudioEnabled);
+  console.log(webrtc.webrtc.isVideoEnabled);
+  $("#notificationsDiv").html("  <form class='navbar-form navbar-left' >"+ 
+              "<div class='form-group'><input type='text' class='form-control tango-input' placeholder='Insert session name here' maxlength='256'></div>"+
+              "<button type='submit' class='btn btn-default tango-btn' onclick='TFXjoinroom'>Tango Now</button>"+
+            "</form>");
+  showtooltip(tooltiproomnotifications , "bubbletooltip" , "Enter session name here");
 });
 
+webrtc.on("joinedRoom",function(){
+  console.log("Joined Room",room);
+  $("#connectionnotification").text("Joined the session");
 
-
-  	webrtc.on("joinedRoom",function(){
-	    console.log("Joined Room",room);
-	    $("#connectionnotification").text("Joined the session");
-	    membersCount=webrtc.webrtc.getPeers().length+1;
-
-	    if(membersCount<=1){
-	    	$("#notifications").html('<div class="roboto"> <span class="fw-100">Oops!</span> <br/> 	<span class="fw-400">It takes two to Tango</span> <br/> <span class="fw-100-small">Why dont you invite someone</span>  </div>');
-		    //load the sharing button so that user can share the 
-		    LoadshareButtons(room);
-		    $('#shareDiv').share({
-		    	networks: ['facebook','googleplus','twitter','email' ,'linkedin', 'tumblr']
-			});
-		    showDiv('shareDiv');
-			// URL for joing page : 'https://tfxserver.above-inc.com/static/tangofxsessionsshare.html?broplugid='+broPlugId+'&roomname='+roomname
-	    }
-  	});
-
+  if(webrtc.webrtc.getPeers().length==0){
+  	$("#notifications").html('<div class="roboto"> <span class="fw-100">Oops!</span> <br/> 	<span class="fw-400">It takes two to Tango</span> <br/> <span class="fw-100-small">Why dont you invite someone</span>  </div>');
+    
+    LoadshareButtons(room);
+    $('#shareDiv').share({
+    	networks: ['facebook','googleplus','twitter','email' ,'linkedin', 'tumblr']
+	  });
+    showDiv('shareDiv');
+	
+  }
+});
 
 function showVolume(el, volume) {
 	if (!el) return;
@@ -243,8 +224,6 @@ function showVolume(el, volume) {
 	  el.style.height = '' + Math.floor((volume + 100) * 100 / 25 - 220) + '%';
 	}
 }
-
-
 
 
 webrtc.on('channelMessage', function (peer, label, data) {
@@ -276,22 +255,19 @@ webrtc.on('channelMessage', function (peer, label, data) {
   	}
 });
 
-
 webrtc.on("RoomTaken",function(){
-    console.log(" Room is already taken by 2 members");
+  console.log(" Room is already taken by 2 members");
  	showtooltip(tooltiproomnotifications, "bubbletooltip","Sorry this session name is already taken");
 });
 
 webrtc.on('videoAdded', function (video, peer) {
 
   	var remotes = document.getElementById('remotes');
-  
   	if (remotes) {
-
       var d = document.createElement('div');
       d.className = 'videoContainer';
       d.id = 'container_' + webrtc.getDomId(peer);
-      //console.log("remote video buffered length "+ video.buffered.length);
+
       video.setAttribute("width", "200px");
       video.setAttribute("height", "200px");
       video.setAttribute("hidden", "true");
@@ -307,13 +283,12 @@ webrtc.on('videoAdded', function (video, peer) {
           video.style.height = video.videoHeight + 'px';
       };
 
-      /*d.appendChild(vol);*/
+      d.appendChild(vol);
       remotes.appendChild(d);
-      membersCount=webrtc.webrtc.getPeers().length+1;
-      console.log("Peer Added || Memebers count "+ membersCount);
+
       callflag=1;		//call was established sucessfully between 2 particiapnats  
       //send both video for caanvas to show local on side screen and remote video on main canvas
-      resizeCanvas(membersCount,document.getElementById("localVideo"),video);
+      resizeCanvas(document.getElementById("localVideo"),video);
   	}
 });
 
@@ -323,68 +298,30 @@ webrtc.on('videoRemoved', function (video, peer) {
   if (remotes && el) {
       remotes.removeChild(el);
 
-	  membersCount=webrtc.webrtc.getPeers().length+1;
-
-      console.log(" Peer removed || Memebers count "+ membersCount);
-
-      //send only local video to be show on main canvas 
-      resizeCanvas(membersCount,document.getElementById("localVideo"),null);
+    resizeCanvas(document.getElementById("localVideo"),null);
       //clear the activity on frames . so that when partner joins he has fresh frames 
       //clearFrames();
   }
 });
 
 
-
-
-//for reszing a canvas where the inner element are not be disturbed  ie just trigered by resize action
-function resizeCanvasalready(){
-  resizeCanvas(membersCount,document.getElementById("localVideo"),document.getElementById("remotes").getElementsByTagName("video")[0]);
-}
-
-//canvas resized and reset
-function resizeCanvas(memCount,video1,video2) {
-	var canvas = document.getElementById('myCanvas');
-  h=window.innerHeight;
-  w=window.innerWidth;
-  canvas.height=h;
-	canvas.width=w;
-
-  if(video1==undefined)
-  	video1=document.getElementById("localVideo");
-
-  if(video2==undefined){
-  	if(document.getElementById("remotes").getElementsByTagName("video")[0]!=undefined)
-  		video2=document.getElementById("remotes").getElementsByTagName("video")[0];
-  	else
-  		video2=null;
-  }
- 	membersCount=webrtc.webrtc.getPeers().length+1;
-  switchVideo(membersCount,video1, video2);
-}
-
 // switch video from local area to widget area on members participlation 
 function switchVideo(memCount,v1,v2){
-		console.log("No of participants: membersCount -> " +membersCount );
-
-	if(membersCount==1){
-	    //console.log("only one participant in session , show his video on canvas show waiting for other parties to join above his video stream");
-	    drawStuff(v1,v2,h,w);
-	    hideDiv("localVideo");
-	    $("#media_settings_btn").removeClass("hidedisplay");
-	    
-	    if (callflag==0){
-	       showDiv("notificationsDiv");
-	    }
-	    else if(callflag==1){
-	      showDiv("notificationsDiv"); 
-	      $('#notifications').text('Your partner has left');
-	    }
-	}
-
-	else if(membersCount==2){
-       // console.log("more than one mebers present add the remote persons video to canvas center");
-       //console.log(" video 1 ", v1 , " video 2 ", v2 );
+  if(webrtc.webrtc.getPeers().length==0){
+      console.log("only one participant in session , show his video on canvas");
+      drawStuff(v1,v2,h,w);
+      hideDiv("localVideo");
+      $("#media_settings_btn").removeClass("hidedisplay");
+      
+      if (callflag==0){
+         showDiv("notificationsDiv");
+      }
+      else if(callflag==1){
+        showDiv("notificationsDiv"); 
+        $('#notifications').text('Your partner has left');
+      }
+  }else if(webrtc.webrtc.getPeers().length>0){
+       console.log("remote members to canvas center");
        //stop the waiting music 
        // stopWaitingMusic();
         if(v1!=null && v2!=null && v1!=v2){          
@@ -395,40 +332,9 @@ function switchVideo(memCount,v1,v2){
         hideDiv("notificationsDiv");
         $("#media_settings_btn").addClass("hidedisplay");
         hidetooltip(tooltiproomnotifications);
-	} 
+  } 
 }
 
-function drawStuff(localvideo,remotevideo,height,width) {
-  	console.log("localvideo ", localvideo, " remotevideo", remotevideo, " height ", height , "width ", width);
-  	var canvas = document.getElementById('myCanvas');
-	  var ctx =canvas.getContext("2d");
-	  var v = '';
-  	//clearCanvas(ctx,"#000");
-  	
-    if( localvideo!=null && remotevideo==null){
-      console.log(" drawing local video on canvas" );
-      clearInterval(i);
-      localvideo.addEventListener('play', paintCanvas(localvideo , ctx, width , height));
-    }
-
-    else if ( localvideo!=null && remotevideo!=null  && localvideo != remotevideo){
-      console.log(" drawing remote video on canvas ");
-      clearInterval(i);
-      remotevideo.addEventListener('play', paintCanvas(remotevideo , ctx, width , height));
-    }
-}
-
-function paintCanvas(v,c,w,h) {
-  c.clearRect(0, 0, w, h);
-  i=window.setInterval(function() {
-         c.drawImage(v,0,0,w,h)
-       },20);
-}
-
-function clearCanvas(c, color){
-  console.log("clear canvas ");
-  c.clearRect(0, 0, c.canvas.width, c.canvas.height);
-}
 
 function showDiv(name){
   document.getElementById(name).removeAttribute("hidden");
@@ -438,57 +344,11 @@ function hideDiv(name){
   document.getElementById(name).hidden = true;
 }
 
-
-
- 	// showtooltip(tooltiproomnotifications , 'Enter session name here .Click on the tango button and share the session link with your partner');
-	// showtooltip(tooltiproomnotifications , "bubbletooltip" , 'Enter session name here');
-
 	//setting the media paremeteres
 	document.getElementById('videomute').value="unmuted";
 	document.getElementById('voicemute').value="unmuted";
 	//document.getElementById("remotes").value="muted";
 
-
- 	function shortenURL(url){
-		
-		if(gapi.client!=undefined && url!=null){
-			console.log("shorten this URL : ", url);
-			//var apiKey = 'AIzaSyCs5YkMagLL83csX_6eABwEvsE3Oj_kMmo';
-			var apiKey='AIzaSyAnPxrh7veHDrDaPjoTRJJV7GoqIoIYgOw';
-			gapi.client.setApiKey(apiKey);
-			//var longurl = 'https://tfxserver.above-inc.com/static/tangofxsessionsshare.html?broplugid=afbomhocbhkipjmmlpbjceldmpceicgl&roomname=fvbdzf';
-			var longurl= url;
-			var request , response;
-
-			gapi.client.load('urlshortener', 'v1', function() {
-			    
-			    request = gapi.client.urlshortener.url.insert({
-			        'resource': {
-			            'longUrl': longurl
-			        }
-			    });
-			    
-			    response = request.execute(function(resp) {
-			        if (resp.error) {
-			            console.log('Error: ' + resp.error.message);
-
-			            //incase of error return the same url as inputed 
-                        localStorage.setItem('shorturl', url);
-			            showtooltip(tooltiproomnotifications,"bubbletooltip",url);
-
-			        } else {
-			        	//sucessful obatining the short url from googl url shortner API
-                        localStorage.setItem('shorturl', resp.id);
-			           	showtooltip(tooltiproomnotifications,"bubbletooltip",resp.id);
-			           // $("#show").html("Short URL for "+longurl+" is: " + resp.id);
-			        }
-			    });
-			});
-		}
-		else{
-			console.log(" gapi.client is undefined ");
-		}
-	}
 
   function setRoom(name) {
 	  document.title = "TangoFX Session "+ room;
@@ -496,16 +356,15 @@ function hideDiv(name){
   }
 
 	function checkmembersCount(){
-		membersCount=webrtc.webrtc.getPeers().length+1;
 
 		// only for cases when video added is not able to recognises peer joining and leaving activity
-		if(membersCount>=2){
+		if(webrtc.webrtc.getPeers().length>1){
 			callflag=1;		//call was established sucessfully between 2 particiapnats  
-	        $('#notifications').text('');
-	        hideDiv("notificationsDiv");
-	        hidetooltip(tooltiproomnotifications);
+	    $('#notifications').text('');
+	    hideDiv("notificationsDiv");
+	    hidetooltip(tooltiproomnotifications);
 		}
-		else if(membersCount==1 && callflag ==1){
+		else if(webrtc.webrtc.getPeers().length==0 && callflag ==1){
 			//close all current frames
 			for (x in widgetarray){
 				console.log(widgetarray[x].type);
@@ -515,49 +374,17 @@ function hideDiv(name){
 			}
 			//set calllflag back to 0
 			callflag=0;
-			//show the notification in red color box
-	        showDiv("notificationsDiv"); 
-	   		$('#notifications').text('Your partner has left');
+	    showDiv("notificationsDiv"); 
+	   	$('#notifications').text('Your partner has left');
 		}
 
 		//console.log(membersCount);
 	}
 
-   var checkmemCounVar = setInterval(function(){ checkmembersCount() }, 3000);
-
-
-
-
 
   /* ------------------------- canvas settings ------------------------------- */
-  window.addEventListener('resize', resizeCanvasalready, false);
-  var w , h; // height and width of video container 
-  var i , j; // interval  for local and remote video
 
 
-
-  
-
-  /*------------- waiting sound till user joins -------------------*/
-  function playWaitingMusic() {
-    var audio = document.getElementById('audio1');
-    if (audio.paused) {
-        audio.volume=0.2;
-        audio.play();
-    }else{
-        audio.pause();
-        audio.currentTime = 0
-    }
-  }
-
-  function stopWaitingMusic() {
-    var audio = document.getElementById('audio1');
-    audio.pause();
-    audio.currentTime = 0;
-  }
-
-
-  
   /*$("#close" ).click(function() {
     console.log("close window ");
     window.close();
@@ -742,66 +569,9 @@ function onWebRTCSucess(type,stream){
   }
 }
 
-/*--------------------speed test with tfx server tfx icon -----------*/
 
-//JUST AN EXAMPLE, PLEASE USE YOUR OWN PICTURE!
-var imageAddr = "https://tfxserver.above-inc.com/static/tfx1.png"; 
-var downloadSize = 1160471; //bytes
-
-function MeasureConnectionSpeed() {
-
-    console.log("testing for speed ");
-    var startTime, endTime;
-    var download = new Image();
-
-    download.onload = function () {
-        endTime = (new Date()).getTime();
-        showResults();
-    }
-    
-    download.onerror = function (err, msg) {
-        //oProgress.innerHTML = "Invalid image, or error downloading";
-        showResultsNonetwork();
-        console.log(err, "||" , msg);
-    }
-    
-    startTime = (new Date()).getTime();
-    var cacheBuster = "?nnn=" + startTime;
-    download.src = imageAddr + cacheBuster;
-    
-    function showResults() {
-        var duration = (endTime - startTime) / 1000;
-        var bitsLoaded = downloadSize * 8;
-        var speedBps = (bitsLoaded / duration).toFixed(2);
-        var speedKbps = (speedBps / 1024).toFixed(2);
-        var speedMbps = (speedKbps / 1024).toFixed(2);
-        
-        $('#network').attr('title',speedMbps+" Mbps");
-
-        if(speedMbps < 2){
-              $('#network').attr('class', 'tango-nav-btn network_btn_inactive');
-              if(!$("#videomute").hasClass("camera_btn_Notworking") && !$("#videomute").hasClass("camera_btn_inactive")){
-              		showtooltip(tooltipnetworknotifications,"networktooltip", 'Low signals. Turn off video for better performance');
-          	  }
-          	  else{
-          	  		showtooltip(tooltipnetworknotifications,"networktooltip", 'Low signals.');
-          	  }
-
-        }else{	
-        	$('#network').attr('class', 'tango-nav-btn network_btn');
-        	hidetooltip(tooltipnetworknotifications);
-        }
-        console.log(speedMbps + " Mbps<br/>");
-    }
-
-
-    function showResultsNonetwork(){
-    	$('#network').attr('class', 'tango-nav-btn network_btn_unavailable');
-    }
-}
 
 /*--------------------tooltips---------------------------*/
-
 
 function showtooltip (elem ,attr, text) {  
     //elem.setAttribute("bubbletooltip",text);

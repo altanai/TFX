@@ -1,0 +1,34 @@
+
+/* giving icons for widgets */
+.AddCode{
+	cursor:pointer;
+	background:url('widgets/AddCode/img/code.png') no-repeat center;
+}
+.AddCode_selected, .AddCode:hover{
+	cursor:pointer;
+	background:url('widgets/AddCode/img/code_hover.png') no-repeat center;
+}
+.AddDraw{
+	cursor:pointer;
+	background:url('widgets/AddDraw/img/draw.png') no-repeat center;
+}
+.AddDraw_selected, .AddDraw:hover{
+	cursor:pointer;
+	background:url('widgets/AddDraw/img/draw_hover.png') no-repeat center;
+}
+.Speechtexttranslator{
+	cursor:pointer;
+	background:url('widgets/Speechtexttranslator/img/speech.png') no-repeat center;
+}
+.Speechtexttranslator_selected, .Speechtexttranslator:hover{
+	cursor:pointer;
+	background:url('widgets/Speechtexttranslator/img/speech_hover.png') no-repeat center;
+}
+.Screensharing{
+	cursor:pointer;
+	background:url('widgets/Screensharing/img/screen.png') no-repeat center;
+}
+.ScreenSharing_selected, .Screensharing:hover{
+	cursor:pointer;
+	background:url('widgets/Screensharing/img/screen_hover.png') no-repeat center;
+}

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body{
 	padding-top: 70px;
 	background-color: #000;
@@ -75,115 +74,7 @@ iframe{
 	width: 100px;
 	height: 30px;
 }
-.tango-nav-btn{
-	margin-right: 15px;
-}
 
-/* buttons for top panel */
-.help_btn{
-	background: url("../img/help.png") no-repeat;
-	margin-top: 18px;
-}
-.help_btn:hover{
-	background: url("../img/help_hover.png") no-repeat;
-	margin-top: 18px;
-}
-
-.settings_btn{
-	background: url("../img/settings.png") no-repeat;
-	margin-top: 18px;
-}
-
-.network_btn_undetected{
-	background: url("../img/networkundetected.png") no-repeat;
-	margin-top: 18px;
-	cursor:default;
-}
-.network_btn{
-	background: url("../img/network.png") no-repeat;
-	margin-top: 18px;
-	cursor:default;
-}
-.network_btn_inactive{
-	background: url("../img/network_low.png") no-repeat;
-	margin-top: 18px;
-	cursor:default;
-}
-.network_btn_unavailable{
-	background: url("../img/networkunavailable.png") no-repeat;
-	margin-top: 18px;
-	cursor:default;
-}
-
-.audio_btn_Notworking{
-	background: url("../img/audio_Notworking.png") no-repeat;
-	margin-top: 18px;
-	cursor:not-allowed;
-}
-
-.audio_btn{
-	background: url("../img/audio_on.png") no-repeat;
-	margin-top: 18px;
-}
-
-.audio_btn:hover{
-	background: url("../img/audio_on_hover.png") no-repeat;
-	margin-top: 18px;
-}
-
-.audio_btn_inactive{
-	background: url("../img/audio_off.png") no-repeat;
-	margin-top: 18px;
-}
-
-.camera_btn_Notworking{
-	background: url("../img/video_Notworking.png") no-repeat;
-	margin-top: 18px;
-	cursor:not-allowed;
-}
-
-.camera_btn{
-	background: url("../img/video_on.png") no-repeat;
-	margin-top: 18px;
-}
-
-.camera_btn:hover{
-	background: url("../img/video_on_hover.png") no-repeat;
-	margin-top: 18px;
-}
-.camera_btn_inactive{
-	background: url("../img/video_off.png") no-repeat;
-	margin-top: 18px;
-}
-
-.logoff_btn{
-	background: url("../img/powerOff.png") no-repeat;
-	/*margin-top: 18px;*/
-	margin-top: 20px;
-	cursor: pointer;
-}
-.navbar-text{
-	color: #fff !important;
-}
-
-.navbar-text-green {
-    color: #00cc00 !important;
-}
-
-.navbar-share{
-	color: #fff !important;
-/*	margin-right:0;
-	margin-left:200px;
-	margin-top:-40px;*/
-	margin-top: 21px;
-	margin-left:28px;
-	position: fixed;
-	z-index: 2;
-}
-
-.navbar-text-roomnotification{
-	color: #808080 !important;
-}
 /* widget column */
 .widget-column{
 	width: 50px;
@@ -216,54 +107,21 @@ iframe{
 	background-color: transparent;
 }
 
-/* giving icons for widgets */
-.AddCode{
-	cursor:pointer;
-	background:url('chrome-extension://__MSG_@@extension_id__/widgets/AddCode/img/code.png') no-repeat center;
-}
-.AddCode_selected, .AddCode:hover{
-	cursor:pointer;
-	background:url('chrome-extension://__MSG_@@extension_id__/widgets/AddCode/img/code_hover.png') no-repeat center;
-}
-.AddDraw{
-	cursor:pointer;
-	background:url('chrome-extension://__MSG_@@extension_id__/widgets/AddDraw/img/draw.png') no-repeat center;
-}
-.AddDraw_selected, .AddDraw:hover{
-	cursor:pointer;
-	background:url('chrome-extension://__MSG_@@extension_id__/widgets/AddDraw/img/draw_hover.png') no-repeat center;
-}
-.Speechtexttranslator{
-	cursor:pointer;
-	background:url('chrome-extension://__MSG_@@extension_id__/widgets/Speechtexttranslator/img/speech.png') no-repeat center;
-}
-.Speechtexttranslator_selected, .Speechtexttranslator:hover{
-	cursor:pointer;
-	background:url('chrome-extension://__MSG_@@extension_id__/widgets/Speechtexttranslator/img/speech_hover.png') no-repeat center;
-}
-.Screensharing{
-	cursor:pointer;
-	background:url('chrome-extension://__MSG_@@extension_id__/widgets/Screensharing/img/screen.png') no-repeat center;
-}
-.ScreenSharing_selected, .Screensharing:hover{
-	cursor:pointer;
-	background:url('chrome-extension://__MSG_@@extension_id__/widgets/Screensharing/img/screen_hover.png') no-repeat center;
-}
 /* Participent window*/
 #videoContent{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    z-index: 1;
-    -webkit-user-drag: element;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+  -webkit-user-drag: element;
 }
 #localVideo{
 	margin-top: 64px;
-    margin-right: 20px;
-    width: 200px!important;
-    height: 150px!important;
-    border-radius:20px;
-    background-color: #000;
+  margin-right: 20px;
+  width: 200px!important;
+  height: 150px!important;
+  border-radius:20px;
+  background-color: #000;
 }
 video, canvas{
 	vertical-align: top;
@@ -288,24 +146,60 @@ video, canvas{
 margin: 10px 40px 10px;
 }
 
+#upperNav{
+  height:34px;
+  width: 100%;
+  position: absolute;
+  top: 0px !important;
+}
+
+
+
+
+
 #tools{
-	margin-top: -50px;
 	margin-left: 40%;
 }
+
+ul#tools li {
+    /*display: inline;*/
+    float:left;
+}
+
+ul#tools li a{
+      height: 20px !important;
+    margin: 2px 2px 2px 2px;
+    padding: 10px 20px 10px 10px;
+}
+ul#tools li a:hover {
+    background-color: orange;
+}
+
+
+
+
+
 #status{
   float: right!important;
   margin-right: -15px;
   position: absolute;
-  /*left: 1100px;*/
   right :8px;
   top: -5px! important;
-	/*margin-top: -50px;*/
-/*    margin-right: -300px;*/
 }
+ul#status li{
+  float:left;
+}
+ul#status li a{
+      height: 20px !important;
+    margin: 2px 2px 2px 2px;
+    padding: 10px 30px 10px 30px;;
+}
+ul#status li a:hover {
+    background-color: orange;
+}
+
+
 #notifications{
-/*margin: 0px 20px 0px 90px;*/
-/*margin: -12px 10px 0px 50px;*/
-/*margin: -7px 10px 0px 60px;*/
   margin: 0px 10px 0px 60px;
   width: 300px;
   color: #fff;
@@ -321,7 +215,6 @@ margin: 10px 40px 10px;
 
 .roboto {
     font-family: "Roboto";
-/*  background-color: #B71B1C;*/
     color: #fff;
     line-height: 19px;
     vertical-align: middle;
@@ -604,78 +497,3 @@ display:none !important;
   src: local('Roboto'), local('Roboto-Regular'), url(https://fonts.gstatic.com/s/roboto/v15/CWB0XYA8bzo0kSThX0UTuA.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
-=======
-    body{
-      background: rgba(212,228,239,1);
-background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
-background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
-    }
-
-    /* Remove the navbar's default margin-bottom and rounded borders */ 
-    .navbar {
-      margin-bottom: 0;
-      border-radius: 0;
-    }
-    
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 450px}
-    
-    /* Set gray background color and 100% height */
-    .sidenav {
-      padding-top: 20px;
-      background-color: #f1f1f1;
-      height: 100%;
-    }
-    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-    
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
-      .sidenav {
-        height: auto;
-        padding: 15px;
-      }
-      .row.content {height:auto;} 
-    }
-
-    .bottomBar{
-    bottom: 0px;
-    position: absolute;
-    width: 100%;
-    }
-
-    video{
-      width: 100%
-    }
-
-    #createRoom{
-      padding-left: 20px;
-      font-size: 19px;
-    }
-
-    #MessageBox{
-      background: rgba(212,228,239,1);
-      background: -moz-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-      background: -webkit-gradient(left top, right top, color-stop(0%, rgba(212,228,239,1)), color-stop(100%, rgba(134,174,204,1)));
-      background: -webkit-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-      background: -o-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-      background: -ms-linear-gradient(left, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-      background: linear-gradient(to right, rgba(212,228,239,1) 0%, rgba(134,174,204,1) 100%);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d4e4ef', endColorstr='#86aecc', GradientType=1 );
-    }
-
-    #subTitle{
-      padding-left: 20px;
-      font-size: 19px;
-    }
->>>>>>> 6b1ba1df5f97ab2df90e374c26e0a4de58c57da3

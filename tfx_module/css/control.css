@@ -1,0 +1,105 @@
+.tango-nav-btn{
+	margin-right: 15px;
+}
+
+/* buttons for top panel */
+.help_btn{
+	background: url("../img/help.png") no-repeat;
+	margin-top: 18px;
+}
+.help_btn:hover{
+	background: url("../img/help_hover.png") no-repeat;
+	margin-top: 18px;
+}
+
+.settings_btn{
+	background: url("../img/settings.png") no-repeat;
+	margin-top: 18px;
+}
+
+.network_btn_undetected{
+	background: url("../img/networkundetected.png") no-repeat;
+	margin-top: 18px;
+	cursor:default;
+}
+.network_btn{
+	background: url("../img/network.png") no-repeat;
+	margin-top: 18px;
+	cursor:default;
+}
+.network_btn_inactive{
+	background: url("../img/network_low.png") no-repeat;
+	margin-top: 18px;
+	cursor:default;
+}
+.network_btn_unavailable{
+	background: url("../img/networkunavailable.png") no-repeat;
+	margin-top: 18px;
+	cursor:default;
+}
+
+.audio_btn_Notworking{
+	background: url("../img/audio_Notworking.png") no-repeat;
+	margin-top: 18px;
+	cursor:not-allowed;
+}
+
+.audio_btn{
+	background: url("../img/audio_on.png") no-repeat;
+	margin-top: 18px;
+}
+
+.audio_btn:hover{
+	background: url("../img/audio_on_hover.png") no-repeat;
+	margin-top: 18px;
+}
+
+.audio_btn_inactive{
+	background: url("../img/audio_off.png") no-repeat;
+	margin-top: 18px;
+}
+
+.camera_btn_Notworking{
+	background: url("../img/video_Notworking.png") no-repeat;
+	margin-top: 18px;
+	cursor:not-allowed;
+}
+
+.camera_btn{
+	background: url("../img/video_on.png") no-repeat;
+	margin-top: 18px;
+}
+
+.camera_btn:hover{
+	background: url("../img/video_on_hover.png") no-repeat;
+	margin-top: 18px;
+}
+.camera_btn_inactive{
+	background: url("../img/video_off.png") no-repeat;
+	margin-top: 18px;
+}
+
+.logoff_btn{
+	background: url("../img/powerOff.png") no-repeat;
+	margin-top: 20px;
+	cursor: pointer;
+}
+.navbar-text{
+	color: #fff !important;
+}
+
+.navbar-text-green {
+    color: #00cc00 !important;
+}
+
+.navbar-share{
+	color: #fff !important;
+	margin-top: 21px;
+	margin-left:28px;
+	position: fixed;
+	z-index: 2;
+}
+
+.navbar-text-roomnotification{
+	color: #808080 !important;
+}

@@ -10321,6 +10321,10 @@ TFXPluginRemoveFunction= function doremoveplugin(plugintype){
     }
   });
 
+	$("#logoff").click(function(){
+		logoffHandler()
+	});
+
   $("#voicemute" ).click(function() {
     DEBUG && console.log(" Voice Mute ");
     if(!$("#voicemute").hasClass("audio_btn_Notworking")){

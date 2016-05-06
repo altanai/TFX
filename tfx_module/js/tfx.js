@@ -1,3 +1,6 @@
+var TFXlocalVideo,TFXremoteVideo , TFXlocalStream , TFXremoteStream;
+var TFXjoinRoom , TFXPluginFunction , TFXPluginShareFunction ,TFXstats , TFXgetRoom;
+var TFXvoiceoff , TFXvoiceon , TFXvideooff , TFXvideoon , TFXclose ; 
 /*---------- broplug API methods to let widgets access the video and audio -----------*/
 
   TFXlocalVideo = function getTFXlocalVideo(plugintype,elementid){
@@ -21,18 +24,20 @@
   }
 
 
-
+/*
+*function to join /create a room
+*/
 TFXjoinroom=function(){
 	room = location.search.substring(1);
 	localStorage.setItem("session", "active");
 
 	if (room){
-		    webrtc.joinRoom(room);
-		    var url=window.location+'?roomname='+room;
-	    gapi.load('client', function() { 
-		  console.log('gapi.client loaded.');
-		  shortenURL(url);
-		});
+		  webrtc.joinRoom(room);
+		  var url=window.location+'?roomname='+room;
+	    //gapi.load('client', function() { 
+		  //console.log('gapi.client loaded.');
+		  //shortenURL(url);
+		  //});
 	} 
 
 	membersCount=webrtc.webrtc.getPeers().length+1;
@@ -154,75 +159,7 @@ TFXRemoteVideooff= function remotevideooff(){
   	webrtc.passWebrtcStats(); 
   }
 
-  /*---------------------------load widgets ------------------------------*/
-
-
-/*
-  function appendWidgetLeftPanel( id, title , icon , type){
-    var li = document.createElement("li");
-    console.log('widget description ----- >', type, icon);
-    li.setAttribute('id', id);
-    li.setAttribute('title',title);
-    li.addEventListener('click', function() {
-     widgetbutton(type);
-    }, false);
-
-    var ic = document.createElement("div");        
-    ic.className =icon;
-    li.appendChild(ic);
-    document.getElementById("widget_toolbar").appendChild(li);
-  }*/
-
-
-  /*---------------------widget buttons -------------------------*/
-
-  //Message Function
-  $("#SendMessage").click(function(){
-    var msg=$('#MessageBox').val();
-    sendMessage(msg);
-    addMessaheLog(msg);
-    $("#MessageBox").val('');
-  });
-
-  //send message when mouse is on mesage dicv ans enter is hit
-  $("#messageContent").keyup(function(event){
-    if(event.keyCode == 13){
-        $("#SendMessage").click();
-    }
-  });
-
-  $("#voicemute" ).click(function() {
-    console.log(" Voice Mute ");
-    if(!$("#voicemute").hasClass("audio_btn_Notworking")){
-	    $(this).toggleClass("audio_btn_inactive");
-	    voicemuteunmute();
-    }
-
-  });
-
-  $("#videomute" ).click(function() {
-    console.log("video off ");
-    if(!$("#videomute").hasClass("camera_btn_Notworking")){
-    	$(this).toggleClass("camera_btn_inactive");
-    	videomuteunmute();
-    }
-
-  });
-
-  $("#remotewindow" ).click(function() {
-    console.log("remote window ");
-    $(this).toggleClass("btn-style-active");
-    remotemuteunmute();
-  });
-
-  //manuals 
-  $("#manuals").click(function() {
-      console.log(" Manuals ");
-      var newURL = 'https://tfxserver.above-inc.com/static/manuals/src/menu.html';
-      chrome.tabs.create({ url: newURL });
-  });
-
-
+  
 
 
   /* ---------------------- widget action -------------------------------- */

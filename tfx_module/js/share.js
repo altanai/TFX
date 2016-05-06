@@ -13,7 +13,7 @@
    
 var LoadshareButtons =  function sharebuttons(roomname){ 
     
-    console.log(" Social networking sharing options ");
+    DEBUG && console.log(" Social networking sharing options ");
 
     var document = window.document;
 
@@ -37,7 +37,7 @@ var LoadshareButtons =  function sharebuttons(roomname){
 
                 $.each($(document).find('meta[name="description"]'),function(idx,item){
                     pageDesc = $(item).attr("content");
-        		});
+                });
                 
                 // each instance of this plugin
                 return this.each(function() {
@@ -60,20 +60,20 @@ var LoadshareButtons =  function sharebuttons(roomname){
                     
                     //give URL for opeininga html page and injecting script inside it 
                     //var newURL = 'chrome-extension://'+broPlugId+'/src/browser_action/SettingsPage.html';
-					//chrome.tabs.create({ url: newURL });
+                    //chrome.tabs.create({ url: newURL });
                     //t="http://tangofxsessions.com?session="+roomname;
-                	//t="<html><head><title>My title</title></head><body>"+roomname+"</body></html>";
-                	//t='<a href="file:///home/altanaibisht/Dropbox/Work/tangofxsessionsshare.html?broplugid=dscfusgcusa&roomname=iuwci">TFX</a>';
-                	//t='file:///home/altanaibisht/Dropbox/Work/tangofxsessionsshare.html?broplugid='+broPlugId+'&roomname='+roomname;
+                    //t="<html><head><title>My title</title></head><body>"+roomname+"</body></html>";
+                    //t='<a href="file:///home/altanaibisht/Dropbox/Work/tangofxsessionsshare.html?broplugid=dscfusgcusa&roomname=iuwci">TFX</a>';
+                    //t='file:///home/altanaibisht/Dropbox/Work/tangofxsessionsshare.html?broplugid='+broPlugId+'&roomname='+roomname;
 
-					if(localStorage.getItem('shorturl')!=null){
-						    t=localStorage.getItem('shorturl');
-                			u=localStorage.getItem('shorturl');
-					}
-					else{
-               			    t='https://tfxserver.above-inc.com/static/tangofxsessionsshare.html?broplugid='+broPlugId+'&roomname='+roomname;
-                			u='https://tfxserver.above-inc.com/static/tangofxsessionsshare.html?broplugid='+broPlugId+'&roomname='+roomname;
-					}
+                    if(localStorage.getItem('shorturl')!=null){
+                            t=localStorage.getItem('shorturl');
+                            u=localStorage.getItem('shorturl');
+                    }
+                    else{
+                            t='https://tfxserver.above-inc.com/static/tangofxsessionsshare.html?broplugid='+broPlugId+'&roomname='+roomname;
+                            u='https://tfxserver.above-inc.com/static/tangofxsessionsshare.html?broplugid='+broPlugId+'&roomname='+roomname;
+                    }
 
 
                     //d ="Welcom to TangoFX at "+ roomname;
