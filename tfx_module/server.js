@@ -4,11 +4,8 @@ var fs = require('fs'),
     https = require('https'),
     http = require('http');
 
-console.log(' Directory --> ' + __dirname);
-console.log(' FakeCertificates from  --> ' + __dirname + '/fakekeys/certificate.pem');
-
-var privateKey = fs.readFileSync(__dirname + '/fakekeys/privatekey.pem').toString(),
-    certificate = fs.readFileSync(__dirname + '/fakekeys/certificate.pem').toString();
+var privateKey = fs.readFileSync(__dirname + '/ssl_certs/server.key').toString(),
+    certificate = fs.readFileSync(__dirname + '/ssl_certs/server.crt').toString();
 
 var app = express();
 

@@ -18,19 +18,19 @@
 
   	<nav id="upperNav" class="navbar navbar-default navbar-fixed-top">
 
-          <p id="roonnameDiv" hidden="true"> 
-             Session : <span id="roonnameSpan" class="navbar-text-green"> </span></p>
+          <div id="roomNameDiv" hidden="true"> 
+              <diV style="float:left"> Your session is : </diV>
+              <div style="font-size:20px" id="roomName" class="navbar-text-green"> ... </div>
+          </div>
 
-          <p id="roomnameInputDiv"  hidden="true">
+          <div id="roomnameInputDiv" class='form-group'>
+            <input type='text' id="roomInputBox" class='form-control tango-input' placeholder='Insert session name here' maxlength='256'>
+            <button type='submit' class='btn btn-default tango-btn' onclick='TFXcreateroom("roomInputBox")'>Tango Now</button>
+          </div>
 
-              <div class='form-group'><input type='text' id="roomInputBox" class='form-control tango-input' placeholder='Insert session name here' maxlength='256'></div>
-              <button type='submit' class='btn btn-default tango-btn' onclick='TFXcreateroom("roomInputBox")'>Tango Now</button>"+
-
-          </p>
 
           <!-- will be at center - tools symbols -->
           <ul id="tools" class="nav navbar-nav">
-
             <li>
               <a href="#" id="manuals" title="Manuals" class="tango-nav-btn help_btn">  </a>
             </li>
@@ -74,10 +74,10 @@
       <div class="home_middle">
 
           <div id="notificationsDiv" class="home_inner" hidden="true">
-              <img id="notificationsimage" src="img/checking.gif" class="pull-left">
-              <p id="notifications" class="notificationStyle">
+              <img id="notificationsImage" src="img/checking.gif" class="pull-left">
+              <div id="notificationsBox" class="notificationStyle">
                       Connceting ...
-              </p>
+              </div>
               <div class="navbar-share" id="shareDiv" hidden="true"></div>
           </div>
 
@@ -151,10 +151,9 @@
 
 
     <link href="css/style.css" rel="stylesheet">
-
+    <script src="js/control.js"></script>
     <script src="js/tfx.js"></script>
     <script src="js/widget.js"></script>
-    <script src="js/control.js"></script>
     <script src="js/broplug.js"></script>
 
   </body>

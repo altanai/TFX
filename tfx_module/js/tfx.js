@@ -27,7 +27,6 @@ var TFXvoiceoff , TFXvoiceon , TFXvideooff , TFXvideoon , TFXclose ;
 *function to create a room
 */
 TFXcreateroom=function(roomInputBox){
-  alert("TFXcreateroom");
   var roomVal=$("#roomInputBox").val();
   var url=window.location+'?roomname='+room;
   console.info(roomVal);
@@ -174,12 +173,7 @@ TFXRemoteVideooff= function remotevideooff(){
   	webrtc.passWebrtcStats(); 
   }
 
-  
-
-
   /* ---------------------- widget action -------------------------------- */
-
-
   // prepare the widget iframe for self side 
   function prepareFrame(plugintype, finalh , finalw) {
 

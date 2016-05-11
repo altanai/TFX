@@ -54,6 +54,7 @@
 window.addEventListener('resize', function(){
   resizeTFX(null,null)
 }, false);
+
 var w , h; // height and width of video container 
 var i , j; // interval  for local and remote video
 
@@ -76,7 +77,6 @@ function drawStuff(localvideo,remotevideo,height,width) {
       clearInterval(i);
       remotevideo.addEventListener('play', paintCanvas(remotevideo , ctx, width , height));
     }
-
 }
 
 function paintCanvas(v,c,w,h) {
@@ -134,7 +134,7 @@ function switchVideo(video1, video2 , h , w){
 }
 
 
-  //canvas resized and reset
+//canvas resized and reset
 function resizeTFX(video1,video2) {
 
   var canvas = document.getElementById('myCanvas');

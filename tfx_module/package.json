@@ -1,6 +1,6 @@
 {
   "name": "tfx_module",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "tfx webrtc agent as a module",
   "main": "main.js",
   "dependencies": {

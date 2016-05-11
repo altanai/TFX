@@ -176,24 +176,26 @@ webrtc.on('readyToCall', function () {
   console.log(" readyToCall : connection established with server --- ");
   console.log(webrtc.webrtc.isAudioEnabled);
   console.log(webrtc.webrtc.isVideoEnabled);
-  $("#notificationsDiv").html(" connected to Server ");
+  $("#notificationsBox").html(" connected to Server ");
   $("#roomnameInputDiv").show();
   showtooltip(tooltiproomnotifications , "bubbletooltip" , "Enter session name here");
 });
 
 webrtc.on("joinedRoom",function(){
-  console.log("Joined Room",room);
   $("#connectionnotification").text("Joined the session");
 
   if(webrtc.webrtc.getPeers().length==0){
-  	$("#notifications").html('<div class="roboto"> <span class="fw-100">Oops!</span> <br/> 	<span class="fw-400">It takes two to Tango</span> <br/> <span class="fw-100-small">Why dont you invite someone</span>  </div>');
-    
+    $("#notificationsimage").attr('src','');
+  	$("#notificationsBox").html('<div class="roboto"> <span class="fw-100">Oops!</span> <br/> 	<span class="fw-400">It takes two to Tango</span> <br/> <span class="fw-100-small">Why dont you invite someone</span>  </div>');
+    hidetooltip(tooltiproomnotifications);
     LoadshareButtons(room);
     $('#shareDiv').share({
     	networks: ['facebook','googleplus','twitter','email' ,'linkedin', 'tumblr']
 	  });
     showDiv('shareDiv');
-	
+    $("#roomName").html(webrtc.roomName);
+    $("#roomnameInputDiv").hide();
+    $("#roomNameDiv").show();
   }
 });
 
@@ -272,6 +274,7 @@ webrtc.on('videoAdded', function (video, peer) {
       callflag=1;		//call was established sucessfully between 2 particiapnats  
       //send both video for caanvas to show local on side screen and remote video on main canvas
       resizeTFX(document.getElementById("localVideo"),video);
+      $(window).trigger('resize');
   	}
 });
 
@@ -309,29 +312,29 @@ function setRoom(name) {
   $('body').addClass('active');
 }
 
-	function checkmembersCount(){
+function checkmembersCount(){
 
-		// only for cases when video added is not able to recognises peer joining and leaving activity
-		if(webrtc.webrtc.getPeers().length>1){
-			callflag=1;		//call was established sucessfully between 2 particiapnats  
-	    $('#notifications').text('');
-	    hideDiv("notificationsDiv");
-	    hidetooltip(tooltiproomnotifications);
-		}
-		else if(webrtc.webrtc.getPeers().length==0 && callflag ==1){
-			//close all current frames
-			for (x in widgetarray){
-				console.log(widgetarray[x].type);
-				if(document.getElementById(widgetarray[x].type)!=null){			      	
-			      		closeframe(widgetarray[x].type);
-				 }
-			}
-			//set calllflag back to 0
-			callflag=0;
-	    showDiv("notificationsDiv"); 
-	   	$('#notifications').text('Your partner has left');
-		}
+	// only for cases when video added is not able to recognises peer joining and leaving activity
+	if(webrtc.webrtc.getPeers().length>1){
+		callflag=1;		//call was established sucessfully between 2 particiapnats  
+    $('#notifications').text('');
+    hideDiv("notificationsDiv");
+    hidetooltip(tooltiproomnotifications);
 	}
+	else if(webrtc.webrtc.getPeers().length==0 && callflag ==1){
+		//close all current frames
+		for (x in widgetarray){
+			console.log(widgetarray[x].type);
+			if(document.getElementById(widgetarray[x].type)!=null){			      	
+		      		closeframe(widgetarray[x].type);
+			 }
+		}
+		//set calllflag back to 0
+		callflag=0;
+    showDiv("notificationsDiv"); 
+   	$('#notifications').text('Your partner has left');
+	}
+}
 
 
   /* ------------------------- canvas settings ------------------------------- */
