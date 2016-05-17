@@ -1,0 +1,16 @@
+{
+  "name": "tfx_webserver",
+  "version": "1.2.0",
+  "description": "web server for hosting tfx module , one cal also use apache or ngnix etc",
+  "main": "propertyWriter.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start" : " node webserver.js"
+  },
+  "keywords": [
+    "webserver",
+    "https"
+  ],
+  "author": "altanai <tara181989@gmail.com>",
+  "license": "MIT"
+}

@@ -2,7 +2,7 @@ var widgetarray=[];
 
 /* --------------widgets -------------------------------*/
 function readWidgetsjson(){
-  $.getJSON('../../widgetsmanisfest.json')
+  $.getJSON('./widgetsmanisfest.json')
   .done(function (data) {
       widgetarray = data;
       console.log(" widgestarray ", widgetarray, "||", widgetarray.length);
@@ -18,15 +18,15 @@ readWidgetsjson();
 
   function appendWidgetLeftPanel( id, title , icon , type){
     var li = document.createElement("li");
-    console.log('widget description ----- >', type, icon);
     li.setAttribute('id', id);
     li.setAttribute('title',title);
     li.addEventListener('click', function() {
      widgetbutton(type);
     }, false);
 
-    var ic = document.createElement("div");        
-    ic.className =icon;
+    var ic = document.createElement("img");        
+    ic.src = icon;
+
     li.appendChild(ic);
     document.getElementById("widget_toolbar").appendChild(li);
   }
@@ -73,10 +73,22 @@ readWidgetsjson();
     remotemuteunmute();
   });
 
-  //manuals 
-  $("#manuals").click(function() {
-      console.log(" Manuals ");
-      var newURL = 'https://tfxserver.above-inc.com/static/manuals/src/menu.html';
-      chrome.tabs.create({ url: newURL });
-  });
 
+    //manuals 
+
+$("#dialog").dialog({
+    autoOpen: false,
+    modal: true,
+    height: 600,
+    open: function(ev, ui){
+            $("#dialog").html('<iframe src="https://docs.google.com/a/above-inc.com/document/d/1YVeR8k3vMwamkgSwuQupIvW0EEAtfcaXkcn_RM2pEbI/pub?embedded=true"></iframe>');             
+        }
+});
+
+
+$("#manuals").click(function() {
+    //var  manual_link = 'https://docs.google.com/a/above-inc.com/document/d/1YVeR8k3vMwamkgSwuQupIvW0EEAtfcaXkcn_RM2pEbI/pub';
+    /*chrome.tabs.create({ url: newURL });*/
+    $('#dialog').dialog('open');
+  
+});

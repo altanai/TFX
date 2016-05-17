@@ -5,8 +5,8 @@
 "type" 	: "draw",
 "title" : "Drawing widget",
 "resize": "no",
-"icon" 	: "img/draw.png", 
-"selectedicon":"img/draw_hover.png",
+"icon" 	: "widgets/AddDraw/img/draw.png", 
+"selectedicon":"widgets/AddDraw/img/draw_hover.png",
 "path":"AddDraw",
 "persistance": "true"
 },
@@ -16,8 +16,8 @@
 "type" 	: "code",
 "title" : "Code widget",
 "resize": "no",
-"icon" 	: "img/code.png", 
-"selectedicon":"img/code_hover.png",
+"icon" 	: "widgets/AddCode/img/code.png", 
+"selectedicon":"widgets/AddCode/img/code_hover.png",
 "path":"AddCode",
 "persistance": "true"
 },
@@ -27,8 +27,8 @@
 "type" : "screensharing",
 "title": "Screen Sharing Widget",
 "resize": "no",
-"icon" 	: "img/screen.png", 
-"selectedicon":"img/screen_hover.png",
+"icon" 	: "widgets/Screensharing/img/screen.png", 
+"selectedicon":"widgets/ScreenSharing/img/screen_hover.png",
 "path":"Screensharing",
 "persistance": "false"
 },
@@ -38,8 +38,8 @@
 "type" : "speechtexttranslator",
 "title": "Speech and Text Translator chat Widget",
 "resize": "no",
-"icon" 	: "img/speech.png", 
-"selectedicon":"img/speech_hover.png",
+"icon" 	: "widgets/Speechtexttranslator/img/speech.png", 
+"selectedicon":"widgets/Speechtexttranslator/img/speech_hover.png",
 "path":"Speechtexttranslator",
 "persistance": "true"
 }

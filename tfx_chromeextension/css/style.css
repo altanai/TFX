@@ -35,6 +35,14 @@ iframe{
 	margin-bottom: 20px;
 	color:black;
 }
+
+.manualdialogclass{
+    width: 80%;
+    position: relative;
+    height: auto;
+    left: 10%;
+}
+
 .home_outer{
 	position: absolute;
 	height: 100%;
