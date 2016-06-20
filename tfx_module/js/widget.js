@@ -2,7 +2,7 @@ var widgetarray=[];
 
 /* --------------widgets -------------------------------*/
 function readWidgetsjson(){
-  $.getJSON('./widgetsmanifest.json')
+  $.getJSON('https://tfxserver.above-inc.com:8084/widgetsmanifest.json')
   .done(function (data) {
       widgetarray = data;
       console.log(" widgestarray ", widgetarray, "||", widgetarray.length);
