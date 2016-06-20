@@ -144,7 +144,7 @@ function chooseMedia(){
 /* --------------webrtc -------------------------------*/
 
 webrtc = new SimpleWebRTC({
-    url: 'https://localhost:8888',
+    url: 'https://tfxserver.above-inc.com:8888',
     socketio: {/* 'force new connection':true*/},
     debug: true,
     localVideoEl: 'localVideo',

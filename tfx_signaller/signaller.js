@@ -12,9 +12,10 @@ var config = require('getconfig'),
 // Create an http(s) server instance to that socket.io can listen to
 if (config.server.secure) {
     server = require('https').Server({
-        key: fs.readFileSync(config.server.key),
-        cert: fs.readFileSync(config.server.cert),
-        passphrase: config.server.password
+        key: fs.readFileSync("/etc/letsencrypt/live/tfxserver.above-inc.com/privkey.pem"),
+        cert: fs.readFileSync("/etc/letsencrypt/live/tfxserver.above-inc.com/cert.pem"),
+        requestCert: true,
+        rejectUnauthorized: false
     }, server_handler);
 } else {
     server = require('http').Server(server_handler);
@@ -27,11 +28,3 @@ console.log("Signaller started -----> ", config);
 sockets(server, config);
 
 if (config.uid) process.setuid(config.uid);
-
-var httpUrl;
-if (config.server.secure) {
-    httpUrl = "https://localhost:" + port;
-} else {
-    httpUrl = "http://localhost:" + port;
-}
-console.log(' -- signal master is running at: ' + httpUrl);
