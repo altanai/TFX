@@ -3,7 +3,7 @@ var TFXjoinRoom , TFXPluginFunction , TFXPluginShareFunction ,TFXstats , TFXgetR
 var TFXvoiceoff , TFXvoiceon , TFXvideooff , TFXvideoon , TFXclose ; 
 /*---------- broplug API methods to let widgets access the video and audio -----------*/
 
-  TFXlocalVideo = function getTFXlocalVideo(plugintype,elementid){
+TFXlocalVideo = function getTFXlocalVideo(plugintype,elementid){
     console.log("TFX Local Video for plugin " + plugintype+" ||  element id " + elementid);
     var childvideo = document.getElementById(plugintype).contentWindow.pluginlocalVideo;
     var childsource = document.createElement('source');
@@ -12,27 +12,27 @@ var TFXvoiceoff , TFXvoiceon , TFXvideooff , TFXvideoon , TFXclose ;
 
     childvideo.appendChild(childsource);
     childvideo.play();
-  }
+}
 
-  TFXremoteVideo = function getTFXremoteVideo(plugintype,elementid){
+TFXremoteVideo = function getTFXremoteVideo(plugintype,elementid){
     console.log("TFX Remote Video for plugin " + plugintype+" ||  element id " + elementid);
     var childvideo = document.getElementById(plugintype).contentWindow.pluginremoteVideo;
     var childsource = document.createElement('source');
     childsource.setAttribute('src', document.getElementById("remotes").getElementsByTagName("video")[0].src);
     childvideo.appendChild(childsource);
     childvideo.play();
-  }
+}
 
 /*
 *function to create a room
 */
 TFXcreateroom=function(roomInputBox){
-  var roomVal=$("#roomInputBox").val();
-  var url=window.location+'?roomname='+room;
-  console.info(roomVal);
-  webrtc.joinRoom(roomVal);
-  console.info(" TFX Create Room ", url);
-  resizeTFX(document.getElementById("localVideo"),null);
+      var roomVal=$("#roomInputBox").val();
+      var url=window.location+'?roomname='+room;
+      console.info(roomVal);
+      webrtc.joinRoom(roomVal);
+      console.info(" TFX Create Room ", url);
+      resizeTFX(document.getElementById("localVideo"),null);
 }
 
 /*
@@ -42,7 +42,7 @@ TFXjoinroom=function(){
 	room = location.search.substring(1);
 	localStorage.setItem("session", "active");
 
-  console.info(" TFX Join Room ", room);
+    console.info(" TFX Join Room ", room);
 
 	if (room){
 		  webrtc.joinRoom(room);
@@ -148,47 +148,45 @@ TFXRemoteVideooff= function remotevideooff(){
     hideDiv(document.getElementById("remotes").getElementsByTagName("video")[0].id);
 
 
+/*------------------ audio stream gathering from simplewebrtc and pasing to plugin frames ------------*/
 
-
-  /*------------------ audio stream gathering from simplewebrtc and pasing to plugin frames ------------*/
-
-  TFXlocalStream=function sendaudiostream(pluginname,ss){
+TFXlocalStream=function sendaudiostream(pluginname,ss){
     var resultstream;
 
     if(ss=="ask"){
-	     console.log(" broplug requested simplewebrtc for stream ");
-	     webrtc.pluginRequestStream(pluginname) 
+         console.log(" broplug requested simplewebrtc for stream ");
+         webrtc.pluginRequestStream(pluginname) 
     }
 
     else {
-	    console.log(" Audio Stream obtained", ss);
-	    resultstream=ss;
-	    document.getElementById(pluginname).contentWindow.fetchstream(resultstream);
+        console.log(" Audio Stream obtained", ss);
+        resultstream=ss;
+        document.getElementById(pluginname).contentWindow.fetchstream(resultstream);
     }
-  }
+}
 
   /*--------------------get statistics from peer connection obeject --------*/
 
-  TFXstats=function stats(){
-  	webrtc.passWebrtcStats(); 
-  }
+TFXstats=function stats(){
+	webrtc.passWebrtcStats(); 
+}
 
   /* ---------------------- widget action -------------------------------- */
-  // prepare the widget iframe for self side 
-  function prepareFrame(plugintype, finalh , finalw) {
+// prepare the widget iframe for self side 
+function prepareFrame(plugintype, finalh , finalw) {
 
-      if (document.getElementById(plugintype)!=null){       //frame exists just edit the src		
-      		console.log(" switch between parallel frames ");
-      		showcurrentwidget(plugintype);    // switch between parallel frames                       
-      }      
-      else { 						            //iframe doesnt exist create one and edit src
-          createFrame(plugintype, finalh, finalw);
-          TFXPluginShareFunction(plugintype, finalh, finalw);
-      }
+  if (document.getElementById(plugintype)!=null){       //frame exists just edit the src		
+  		console.log(" switch between parallel frames ");
+  		showcurrentwidget(plugintype);    // switch between parallel frames                       
+  }      
+  else { 						            //iframe doesnt exist create one and edit src
+      createFrame(plugintype, finalh, finalw);
+      TFXPluginShareFunction(plugintype, finalh, finalw);
   }
+}
 
   //create a iframe for holding the plugin / size of iframe is determined by prepareframe ans sync frame functions 
-  function createFrame(plugin, pluginh, pluginw){
+function createFrame(plugin, pluginh, pluginw){
 
   	if(document.getElementById(plugin)==null){
   		console.log(" creating the frame "+ plugin);
@@ -231,54 +229,54 @@ TFXRemoteVideooff= function remotevideooff(){
 
 		  var target = document.getElementById("widget_loader");
 		  target.appendChild(ifrm);
-	  	}
-        showcurrentwidget(plugin);		// switch between parallel frames
-  }
+	}
+    showcurrentwidget(plugin);		// switch between parallel frames
+}
 
-  function showcurrentwidget(plugin){
-			//iframes exists just call the approproate iframe for the widget hide other iframes
-  	    for (x in widgetarray){
-		    if(widgetarray[x].type!=plugin && document.getElementById(widgetarray[x].type)!=null){			      	
+function showcurrentwidget(plugin){
+	//iframes exists just call the approproate iframe for the widget hide other iframes
+    for (x in widgetarray){
+	    if(widgetarray[x].type!=plugin && document.getElementById(widgetarray[x].type)!=null){			      	
+	      	if(widgetarray[x].persistance=="true")
+	      		hideframe(widgetarray[x].type);
+	      	else if(widgetarray[x].persistance=="false") {
+	      		closeframe(widgetarray[x].type);
+	      	}
+      	}
+      	else if(widgetarray[x].type==plugin && document.getElementById(widgetarray[x].type)!=null){
+      		currentframe=widgetarray[x].type;
+      		showframe(widgetarray[x].type);
+      	}
+  	}
+}
+
+function removeFrame(plugin){
+    console.log(" Hide current frame -> leave screen blank");
+     //check for persistance flag in widgets manifest if persistance if true then do not unload otherwise unload ( remove ) the iframe
+        for (x in widgetarray){
+		    if(widgetarray[x].type==plugin && document.getElementById(widgetarray[x].type)!=null){			      	
 		      	if(widgetarray[x].persistance=="true")
 		      		hideframe(widgetarray[x].type);
 		      	else if(widgetarray[x].persistance=="false") {
 		      		closeframe(widgetarray[x].type);
 		      	}
 	      	}
-	      	else if(widgetarray[x].type==plugin && document.getElementById(widgetarray[x].type)!=null){
-	      		currentframe=widgetarray[x].type;
-	      		showframe(widgetarray[x].type);
-	      	}
 	  	}
-  }
+    currentframe='';
+}
 
-	function removeFrame(plugin){
-	    console.log(" Hide current frame -> leave screen blank");
-         //check for persistance flag in widgets manifest if persistance if true then do not unload otherwise unload ( remove ) the iframe
-            for (x in widgetarray){
-			    if(widgetarray[x].type==plugin && document.getElementById(widgetarray[x].type)!=null){			      	
-			      	if(widgetarray[x].persistance=="true")
-			      		hideframe(widgetarray[x].type);
-			      	else if(widgetarray[x].persistance=="false") {
-			      		closeframe(widgetarray[x].type);
-			      	}
-		      	}
-		  	}
-        currentframe='';
-	}
+function showframe(framename){
+			document.getElementById(framename).removeAttribute("hidden");
+}
 
-  function showframe(framename){
- 			document.getElementById(framename).removeAttribute("hidden");
-  }
+function hideframe(framename){
+		document.getElementById(framename).hidden = true;
+}
 
-  function hideframe(framename){
-  		document.getElementById(framename).hidden = true;
-  }
-
-  function closeframe(framename){
-	  	var someIframe = window.parent.document.getElementById(framename);
-			someIframe.parentNode.removeChild(window.parent.document.getElementById(framename));
-  }
+function closeframe(framename){
+  	var someIframe = window.parent.document.getElementById(framename);
+		someIframe.parentNode.removeChild(window.parent.document.getElementById(framename));
+}
 
 
   /*----------------script for drawers -------------------------*/

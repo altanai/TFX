@@ -324,10 +324,9 @@ function checkmembersCount(){
 	else if(webrtc.webrtc.getPeers().length==0 && callflag ==1){
 		//close all current frames
 		for (x in widgetarray){
-			console.log(widgetarray[x].type);
 			if(document.getElementById(widgetarray[x].type)!=null){			      	
-		      		closeframe(widgetarray[x].type);
-			 }
+		      	closeframe(widgetarray[x].type);
+			}
 		}
 		//set calllflag back to 0
 		callflag=0;

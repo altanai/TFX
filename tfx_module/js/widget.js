@@ -2,7 +2,7 @@ var widgetarray=[];
 
 /* --------------widgets -------------------------------*/
 function readWidgetsjson(){
-  $.getJSON('./widgetsmanisfest.json')
+  $.getJSON('./widgetsmanifest.json')
   .done(function (data) {
       widgetarray = data;
       console.log(" widgestarray ", widgetarray, "||", widgetarray.length);
@@ -21,7 +21,7 @@ function appendWidgetLeftPanel( id, title , icon , type){
     li.setAttribute('id', id);
     li.setAttribute('title',title);
     li.addEventListener('click', function() {
-     widgetbutton(type);
+        widgetbutton(type);
     }, false);
 
     var ic = document.createElement("img");        
@@ -73,17 +73,15 @@ $("#remotewindow" ).click(function() {
 });
 
 
-    //manuals 
-
+//manuals 
 $("#dialog").dialog({
     autoOpen: false,
     modal: true,
     height: 600,
     open: function(ev, ui){
-            $("#dialog").html('<iframe src="https://docs.google.com/a/above-inc.com/document/d/1YVeR8k3vMwamkgSwuQupIvW0EEAtfcaXkcn_RM2pEbI/pub?embedded=true"></iframe>');             
-        }
+        $("#dialog").html('<iframe src="https://docs.google.com/a/above-inc.com/document/d/1YVeR8k3vMwamkgSwuQupIvW0EEAtfcaXkcn_RM2pEbI/pub?embedded=true"></iframe>');             
+    }
 });
-
 
 $("#manuals").click(function() {
     //var  manual_link = 'https://docs.google.com/a/above-inc.com/document/d/1YVeR8k3vMwamkgSwuQupIvW0EEAtfcaXkcn_RM2pEbI/pub';
