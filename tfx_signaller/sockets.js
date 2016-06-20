@@ -75,6 +75,7 @@ module.exports = function (server, config) {
             console.log(" client send disconnect "  );
             removeFeed();
         });
+
         client.on('leave', function () {
             console.log(" client send leave");
             removeFeed();
@@ -150,7 +151,6 @@ module.exports = function (server, config) {
     function clientsInRoom(name) {
         return io.sockets.clients(name).length;
     }
-
 };
 
 function safeCb(cb) {

@@ -550,7 +550,8 @@ window.onerror = function(msg, url, linenumber) {
     //return true;
 }
 
-
-document.getElementById("btnTangoNow").onclick=function(){
-  TFXcreateroom("roomInputBox");
-}
+document.addEventListener('DOMContentLoaded', function(){ 
+  document.getElementById("btnTangoNow").onclick=function(){
+    TFXcreateroom("roomInputBox");
+  }
+}, false);
