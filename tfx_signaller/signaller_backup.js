@@ -22,8 +22,6 @@ if (config.server.secure) {
 
 server.listen(port);
 
-console.log("Signaller started -----> ", config);
-
 sockets(server, config);
 
 if (config.uid) process.setuid(config.uid);

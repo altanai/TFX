@@ -4,8 +4,8 @@
     "port": 8888,
     "/* secure */": "/* whether this connects via https */",
     "secure": true,
-    "key": "ssl_certs/server.key",
-    "cert": "ssl_certs/server.crt",
+    "key": "/etc/letsencrypt/live/tfxserver.above-inc.com/privkey.pem",
+    "cert": "/etc/letsencrypt/live/tfxserver.above-inc.com/cert.pem",
     "password": null
   },
   "rooms": {
