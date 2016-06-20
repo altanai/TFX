@@ -14,7 +14,7 @@ WATCHDOGLOGFILE=$LOGFOLDER"admin-watchdog-error.log"
 #Node process error log file
 NODELOGFILE=$LOGFOLDER"admin-error.log"
 #Command to be executed on daemon start
-COMMAND="node tfx_webserver/webserver.js  1 > /dev/null 2>> $NODELOGFILE"
+COMMAND="NODE_ENV=production node signaller.js 1 > /dev/null 2>> $NODELOGFILE"
 
 ARG_1=$1
 

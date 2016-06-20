@@ -16,9 +16,8 @@ var file = new _static.Server(folderPath, {
 console.log("Folder Path " ,folderPath , file);
 
 var options = {
-  key: fs.readFileSync('ssl_certs/server.key'),
-  cert: fs.readFileSync('ssl_certs/server.crt'),
-  ca: fs.readFileSync('ssl_certs/ca.crt'),
+  key: "/etc/letsencrypt/live/tfxserver.above-inc.com/privkey.pem",
+  cert: "/etc/letsencrypt/live/tfxserver.above-inc.com/cert.pem",
   requestCert: true,
   rejectUnauthorized: false
 };
