@@ -3,7 +3,7 @@
 
   "name": "TFX Sessions",
   "description": "TFX sessions",
-  "version": "9",
+  "version": "9.5.1",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
@@ -27,10 +27,8 @@
   "activeTab", 
   "contextMenus",
   "tabs",
-  "http://192.168.0.119/*",
   "http://*.google.com/",
-  "https://192.168.0.119:8000/TFXCrossSiteProj",
-  "https://tfxserver.above-inc.com/"
+  "https://tfxserver.above-inc.com/*"
 ],
 
 "content_scripts": [ {
@@ -44,5 +42,5 @@
 
 "web_accessible_resources": [ "environment.js" ],
 
-"content_security_policy": "script-src 'self' 'unsafe-eval'  https://apis.google.com/ https://www.googleapis.com/language/ https://api.flickr.com/  https://connect.facebook.net https://tfxserver.above-inc.com/; object-src 'self'"
+"content_security_policy": "script-src 'self' 'unsafe-eval'  https://apis.google.com/ https://www.googleapis.com/language/ https://tfxserver.above-inc.com:8084/ https://connect.facebook.net https://tfxserver.above-inc.com/; object-src 'self'"
 }

@@ -1,46 +1,46 @@
 [
-{
-"plugintype": "draw",
-"id" 	:"Draw",
-"type" 	: "draw",
-"title" : "Drawing widget",
-"resize": "no",
-"icon" 	: "img/draw.png", 
-"selectedicon":"img/draw_hover.png",
-"path":"AddDraw",
-"persistance": "true"
-},
-{
-"plugintype": "code",
-"id" 	:"LiveCode",
-"type" 	: "code",
-"title" : "Code widget",
-"resize": "no",
-"icon" 	: "img/code.png", 
-"selectedicon":"img/code_hover.png",
-"path":"AddCode",
-"persistance": "true"
-},
-{
-"plugintype": "screensharing",
-"id"   : "Screen sharing",
-"type" : "screensharing",
-"title": "Screen Sharing Widget",
-"resize": "no",
-"icon" 	: "img/screen.png", 
-"selectedicon":"img/screen_hover.png",
-"path":"Screensharing",
-"persistance": "false"
-},
-{
-"plugintype": "speechtexttranslator",
-"id"   : "Speechtext Translator",
-"type" : "speechtexttranslator",
-"title": "Speech and Text Translator chat Widget",
-"resize": "no",
-"icon" 	: "img/speech.png", 
-"selectedicon":"img/speech_hover.png",
-"path":"Speechtexttranslator",
-"persistance": "true"
-}
+	{
+		"plugintype": "draw",
+		"id" 	:"Draw",
+		"type" 	: "draw",
+		"title" : "Drawing widget",
+		"resize": "no",
+		"icon" 	: "img/draw.png", 
+		"selectedicon":"img/draw_hover.png",
+		"path":"AddDraw",
+		"persistance": "true"
+	},
+	{
+		"plugintype": "code",
+		"id" 	:"LiveCode",
+		"type" 	: "code",
+		"title" : "Code widget",
+		"resize": "no",
+		"icon" 	: "img/code.png", 
+		"selectedicon":"img/code_hover.png",
+		"path":"AddCode",
+		"persistance": "true"
+	},
+	{
+		"plugintype": "screensharing",
+		"id"   : "Screen sharing",
+		"type" : "screensharing",
+		"title": "Screen Sharing Widget",
+		"resize": "no",
+		"icon" 	: "img/screen.png", 
+		"selectedicon":"img/screen_hover.png",
+		"path":"Screensharing",
+		"persistance": "false"
+	},
+	{
+		"plugintype": "speechtexttranslator",
+		"id"   : "Speechtext Translator",
+		"type" : "speechtexttranslator",
+		"title": "Speech and Text Translator chat Widget",
+		"resize": "no",
+		"icon" 	: "img/speech.png", 
+		"selectedicon":"img/speech_hover.png",
+		"path":"Speechtexttranslator",
+		"persistance": "true"
+	}
 ]

@@ -163,7 +163,7 @@ webrtc = new SimpleWebRTC({
         mirror: true,
         muted: true
     }
-	});
+});
 
 console.log(" webrtc ",webrtc );
 console.log(" Signalling server ", webrtc.config.url);
@@ -548,4 +548,9 @@ window.onerror = function(msg, url, linenumber) {
     console.error(" Error " , msg );
     //window.location.href = "index.html";
     //return true;
+}
+
+
+document.getElementById("btnTangoNow").onclick=function(){
+  TFXcreateroom("roomInputBox");
 }
