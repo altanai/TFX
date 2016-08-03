@@ -1,0 +1,22 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/altanai/.nvm/versions/node/v5.0.0/bin/node',
+1 verbose cli   '/home/altanai/.nvm/versions/node/v5.0.0/bin/npm',
+1 verbose cli   'start' ]
+2 info using npm@3.3.6
+3 info using node@v5.0.0
+4 verbose config Skipping project config: /home/altanai/.npmrc. (matches userconfig)
+5 verbose stack Error: ENOENT: no such file or directory, open '/home/altanai/package.json'
+5 verbose stack     at Error (native)
+6 verbose cwd /home/altanai/tfx
+7 error Linux 4.2.0-35-generic
+8 error argv "/home/altanai/.nvm/versions/node/v5.0.0/bin/node" "/home/altanai/.nvm/versions/node/v5.0.0/bin/npm" "start"
+9 error node v5.0.0
+10 error npm  v3.3.6
+11 error path /home/altanai/package.json
+12 error code ENOENT
+13 error errno -2
+14 error syscall open
+15 error enoent ENOENT: no such file or directory, open '/home/altanai/package.json'
+15 error enoent This is most likely not a problem with npm itself
+15 error enoent and is related to npm not being able to find a file.
+16 verbose exit [ -2, true ]
