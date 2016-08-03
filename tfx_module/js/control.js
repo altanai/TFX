@@ -20,7 +20,7 @@
 	});
 
   $("#voicemute" ).click(function() {
-    DEBUG && console.log(" Voice Mute ");
+    httpconsole.log(" Voice Mute ");
     if(!$("#voicemute").hasClass("audio_btn_Notworking")){
 	    $(this).toggleClass("audio_btn_inactive");
 	    voicemuteunmute();
@@ -29,7 +29,7 @@
   });
 
   $("#videomute" ).click(function() {
-    DEBUG && console.log("video off ");
+    httpconsole.log("video off ");
     if(!$("#videomute").hasClass("camera_btn_Notworking")){
     	$(this).toggleClass("camera_btn_inactive");
     	videomuteunmute();
@@ -38,17 +38,37 @@
   });
 
   $("#remotewindow" ).click(function() {
-    DEBUG && console.log("remote window ");
+    httpconsole.log("remote window ");
     $(this).toggleClass("btn-style-active");
     remotemuteunmute();
   });
 
-  //manuals 
-  $("#manuals").click(function() {
-      DEBUG && console.log(" Manuals ");
-      var newURL = 'https://tfxserver.above-inc.com/static/manuals/src/menu.html';
-      chrome.tabs.create({ url: newURL });
-  });
+
+
+/* -------------------------------manuals ----------------------------------*/
+$("#manual_dialog").dialog({
+    autoOpen: false,
+    modal: true,
+    dialogClass: 'manualdialogclass',
+    buttons: {
+            Cancel: function() {
+                    $( this ).dialog( "close" );
+            }
+    },
+    close: function() {
+            allFields.val( "" ).removeClass( "ui-state-error" );
+    },
+    open: function(ev, ui){
+            $("#manual_dialog").html('<iframe src="https://docs.google.com/a/above-inc.com/document/d/1YVeR8k3vMwamkgSwuQupIvW0EEAtfcaXkcn_RM2pEbI/pub?embedded=true"></iframe>');             
+    }
+});
+
+
+$("#manuals").click(function() {
+    //var  manual_link = 'https://docs.google.com/a/above-inc.com/document/d/1YVeR8k3vMwamkgSwuQupIvW0EEAtfcaXkcn_RM2pEbI/pub';
+    /*chrome.tabs.create({ url: newURL });*/
+    $('#manual_dialog').dialog('open');
+});
 
   /*------------canvas -------------------*/
 window.addEventListener('resize', function(){
@@ -67,13 +87,11 @@ function drawStuff(localvideo,remotevideo,height,width) {
     //clearCanvas(ctx,"#000");
     
     if( localvideo!=null && remotevideo==null){
-      console.log(" drawing local video on canvas" );
       clearInterval(i);
       localvideo.addEventListener('play', paintCanvas(localvideo , ctx, width , height));
     }
 
     else if ( localvideo!=null && remotevideo!=null  && localvideo != remotevideo){
-      console.log(" drawing remote video on canvas ");
       clearInterval(i);
       remotevideo.addEventListener('play', paintCanvas(remotevideo , ctx, width , height));
     }
@@ -106,7 +124,6 @@ function switchVideo(video1, video2 , h , w){
   }
 
   if(webrtc.webrtc.getPeers().length==0){
-      console.log("only one participant in session");
       hideDiv("localVideo");
       $("#media_settings_btn").removeClass("hidedisplay");
       
@@ -119,7 +136,7 @@ function switchVideo(video1, video2 , h , w){
       }
   }else if(webrtc.webrtc.getPeers().length>0){
        console.log("remote members to canvas center");
-       //stop the waiting music 
+       // stop the waiting music 
        // stopWaitingMusic();
         if(video1 && video2 && video1!=video2){          
             showDiv("localVideo");

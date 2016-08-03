@@ -19,12 +19,9 @@ var folderPath="minified";
 gulp.task('vendorjs',function() {
     console.log(" gulping snapshotRecord  ");
     list=[ 
-        "https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js",
-        "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
+        "http://code.jquery.com/jquery-1.11.1.min.js",
+        "http://code.jquery.com/ui/1.11.1/jquery-ui.min.js",
         "https://apis.google.com/js/client.js?onload=init",
-        "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular.js",
-        "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-route.js",
-        "https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.js",
         "https://cdn.socket.io/socket.io-1.4.5.js",
         "https://simplewebrtc.com/latest-v2.js"
     ]; 
@@ -51,7 +48,7 @@ gulp.task('customscripts',function() {
 gulp.task('vendorcss',function() {
     console.log(" gulping main stylesheets css  ");
     cssList=[
-      "http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+        "https://code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css"
     ];
     console.log(cssList);
     remoteSrc(list, { base: ''})
