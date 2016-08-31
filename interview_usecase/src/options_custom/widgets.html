@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Widgets Framework for Broplug</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+
+  <script src="js/posts.js"></script>
+
+  <link rel="stylesheet" href="css/file.css">
+
+</head>
+<body>
+
+<!-- Menu section -->
+  <script type="text/x-handlebars">
+    <div class="navbar">
+      <div class="navbar-inner">
+        {{#link-to 'index' class='brand'}}Widgets{{/link-to}}
+        <ul class="nav">
+          <li>{{#link-to 'posts'}}Widgets List{{/link-to}}</li>
+          <li>{{#link-to 'widgetupload'}}Upload Widget{{/link-to}}</li>
+          <li>{{#link-to 'aboutbroplug'}}Use Broplug API{{/link-to}}</li>
+          <li>{{#link-to 'aboutwidgets'}}How to ?{{/link-to}}</li>
+        </ul>
+      </div>
+    </div>
+
+    {{outlet}}
+
+  </script>
+
+
+<!-- Widgets section -->
+  <script type="text/x-handlebars" id="posts">
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <table class='table'>
+            <thead>
+              <tr><th>Current Widgets</th></tr>
+            </thead>
+
+            <tbody>
+              {{#each model}}
+                <tr>
+                  <td>
+                    {{#link-to 'post' this}}{{title}} <small class='muted'>by {{version}}</small>{{/link-to}}
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="span9">
+          {{outlet}}
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="posts/index">
+    <p class="text-warning">Please select a post</p>
+  </script>
+
+  <script type="text/x-handlebars" id="post">
+    {{#if isEditing}}
+      {{partial 'post/edit'}}
+      <button {{action 'doneEditing'}}>Done</button>
+    {{else}}
+      <button {{action 'edit'}}>Edit</button>
+    {{/if}}
+
+    <h1>{{title}}</h1>
+    <h2>by {{author.name}} <small class='muted'>({{format-date date}})</small></h2>
+
+    <hr>
+
+    <div class='intro'>
+      <p>{{format-markdown excerpt}} </p>
+      <p>{{ version }} </p>
+      <p>{{ author }} </p>
+      <p>{{ description }} </p>
+      <p>{{ date }} </p>
+    </div>
+
+    <div class='below-the-fold'>
+      {{format-markdown body}}
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="post/_edit">
+    <p>{{input type="text" value=title}}</p>
+    <p>{{input type="text" value=excerpt}}</p>
+    <p>{{input type="text" value=version}}</p>
+    <p>{{input type="text" value=author}}</p>
+    <p>{{input type="text" value=date}}</p>
+    <p>{{input type="text" value=description}}</p>
+    <p>{{textarea value=body}}</p>
+  </script>
+
+<!-- upload a manifest file for widget -->
+ <!-- <script type="text/x-handlebars">
+    
+    {{outlet}}
+  </script>
+-->
+  <script type="text/x-handlebars" id="widgetupload">  
+    <!--
+    <div id="container">
+  
+    <h2>Upload a Widget</h2>
+    
+    <ol id="demo-container">
+      <li>
+        <label>
+          <span class="form-label">choose a zip file</span>
+          <input type="file" accept="application/zip" id="file-input">
+        </label>
+      </li>
+      <li>
+        <label>
+          <span class="form-label">choose temporary storage</span>
+          <select id="creation-method-input">
+            <option value="Blob">RAM</option>
+            <option value="File">HDD</option>
+          </select>
+        </label>
+      </li>
+      <li>
+        <span class="form-label">download zip content</span>
+        <ul id="file-list">
+        </ul>
+      </li>
+    </ol>
+
+  </div> -->
+
+    <h3>Upload a Widget</h3>
+    
+    <ul>
+      {{#each item in model}}
+        <li>{{item}}</li>
+      {{/each}}
+    </ul>
+
+    Change List of Things:
+    {{#view Ember.View}}
+      {{view App.FileUp}}
+    {{/view}}
+  </script>
+
+<!-- about section -->
+  <script type="text/x-handlebars" id="aboutwidgets">
+    <div class='about'>
+    <p>
+    To make a new widget follow these instruction <br/><br/>
+
+    1. create a parent folder inside the chrome extension folder <br/>
+    2. create child folders such as js , css , iamges and src<br/>
+    3. Create a manifest file defining the properties of your widget<br/>
+    4. Create the various js and css scripts and put them in the js and css folder respectively<br/>
+    5. make the html page that will be displayed on the glass pane of Broplug . Put these in the src folder <br/>
+    6. Upload the manifest file into widgets page <br/>
+    </p>
+
+    <a download="ToMakeWidget.txt" href="data:text/plain;charset=UTF-8,Hello%2C%20File!">
+      Download This File
+    </a>
+
+    </div>
+  </script>
+
+  <script type="text/x-handlebars" id="aboutbroplug">
+    <div class='about'>
+    <p>
+    To run the Broplug Dmeonstration to the following :<br/><br/>
+
+    1. Make sure you have a stable / dev chrome version above 18 . Now goto settings option from the browser window . <br/>
+    2. Click on the extensions tab . Upload the extension Broplug . <br/>
+    3. Click on the broplug webrtc icon apperaing in the chrome browser<br/>
+    4. From the panel / popup window that appears , enter room name in the text box to create the room .<br/>
+    5. The other peer also open the bropluf exntension as described in setps 1 to 3 . After this the peer enter the name of the existing room to join the webrtc session . <br/>
+    6. The peer can use the various widgets present in the menu bar to add features to the video call . <br/>
+    </p>
+
+    <a download="ToStartBroplugAPIDemo.txt" href="data:text/plain;charset=UTF-8,Hello%2C%20File!">
+      Download This File
+    </a>
+
+    </div>
+  </script>
+
+<!-- libraries -->
+
+  <script src="js/libs/jquery-v1.11.1.js"></script>
+  <script src="js/libs/handlebars-v1.3.0.js"></script>
+  <script src="js/libs/ember-v1.6.1.js"></script>
+
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/showdown/0.3.1/showdown.min.js"></script>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.1.0/moment.min.js"></script>
+
+  <script src="js/libs/ember-uploader.js"></script>
+  <script src="js/libs/Blob.js"></script>
+  <script src="js/libs/FileSaver.js"></script>
+
+  <script type="text/javascript" src="js/libs/reader.js"></script>
+  <script type="text/javascript" src="js/libs/zip.js"></script>
+
+
+  <script src="js/app.js"></script>
+
+</body>
+</html>

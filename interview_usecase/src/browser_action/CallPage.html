@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Broplug Demo</title>
+
+<script src="../../js/jquerymin.js"></script>
+
+<!--webrtc specific function -->
+        <script src="../../js/socket.io.js"></script>
+        <script src="../../js/simplewebrtc.bundle.js"></script>
+        <script src="../../js/broplugAPI.js"></script>  
+	<link href="../../css/videovolume.css" rel="stylesheet" type="text/css">
+	<link href="../../css/opacity.css" rel="stylesheet" type="text/css">
+
+<!-- opacity and depth of video and cnavas elements -->
+<link href="../../css/opacity.css" rel="stylesheet" type="text/css">
+
+<!--overall styling -->
+<link href="../../css/style.css" rel="stylesheet" type="text/css" /> 
+
+      
+</head>
+
+<body>
+
+<canvas id="myCanvas" style="border:1px solid #d3d3d3;">
+		Your browser does not support the HTML5 canvas tag.</canvas> 
+
+	<!-- page content div starts here -->	
+<div id="pageContent">
+    	
+        <h3 id="title">Broplug WebRTC - Call Attendant</h3>
+        <h1 id="RoomName"> </h1>
+        <img src="../../icons/tango_logo_home.png" height=40, width=40 >      
+
+		<!-- Make Room div start here -->
+		<table style="width: 100%">
+		    <tr>	
+			<!-- area for menu , should be foldable -->
+			<td style="width: 2%" id="menu">
+				<ul>
+				  
+				  <li>
+				    <p id="Plus"><img src="../../icons/plus.jpg" height="40" width="40"></p>
+				  </li>
+
+				  <li>
+				    <p id="Interview"><img src="../../icons/joinconfroom.jpg" height="40" width="40"></p>
+				  </li>
+				  
+				  <li>
+				    <p id="LiveCode"><img src="../../icons/coding.jpg" height="40" width="40"></p>
+				  </li>
+				  
+				  <li>
+				    <p id="Draw"><img src="../../icons/draw.jpg" height="40" width="40"></p>
+				  </li>
+
+				  <li>
+				    <p id="Settings"><img src="../../icons/configuration.png" height="40" width="40"></p>
+				  </li>
+
+				  <li>
+				    <p id="Media"><img src="../../icons/media.png" height="40" width="40"></p>
+				  </li>
+				
+				</ul>
+			</td>        
+
+			<!-- area for other opposite participant window ,. Overlayed by canvas and code / draw etc -->
+			<td style="width: 78%" id="remoteArea">               
+			<!--	<iframe src="../../AddCode/src/codewindow.html" allowtransparency="true" height=50% width=50%> -->
+				<div id="widgetDiv">		
+					<!-- <iframe id="myFrame"/> -->
+				</div>
+		    </td>
+			
+			<!-- area for other participants window -->
+		    <td style="width: 20%" id="localArea">
+				<div id="remotes"></div>           	
+				<div id="localVideoContainer" class="videoContainer">
+		            <video id="localVideo"></video>
+		        </div>
+		          	
+				<br/><br/>
+
+				<textarea rows="8" cols="20" id="MessageHistoryBox">
+				Message log will apear here. 
+				</textarea>
+				 <input type ="text" id="MessageBox"/>
+				 <p id="SendMessage"><img src="../../icons/message.png" height="40" width="40"></p>      	           
+		    </td>
+		    </tr>
+		</table>
+		<!-- Mak Room div end here -->
+
+</div>
+<!-- Pageocntent div end here -->
+
+
+<!-- side menu action -->
+<script src="../../js/widgetaction.js" type="text/javascript"></script>
+
+<!-- Canvas Element -->
+<script src="../../js/canvas.js" type="text/javascript"></script>
+
+<!-- Widget Element -->
+<script src="../../js/widget.js" type="text/javascript"></script>
+
+<!-- End Element -->
+<script src="../../js/end.js" type="text/javascript"></script>
+
+</body>
+</html>

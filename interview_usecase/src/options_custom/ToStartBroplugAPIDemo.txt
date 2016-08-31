@@ -1,0 +1,9 @@
+To run the Broplug Dmeonstration to the following :
+
+1. Make sure you have a stable / dev chrome version above 18 . Now goto settings option from the browser window . 
+2. Click on the extensions tab . Upload the extension Broplug . 
+3. Click on the broplug webrtc icon apperaing in the chrome browser
+4. From the panel / popup window that appears , enter room name in the text box to create the room .
+5. The other peer also open the bropluf exntension as described in setps 1 to 3 . After this the peer enter the name of the existing room to join the webrtc session . 
+6. The peer can use the various widgets present in the menu bar to add features to the video call . 
+ 

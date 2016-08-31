@@ -1,0 +1,8 @@
+To make a new widget follow these instruction 
+
+1. create a parent folder inside the chrome extension folder 
+2. create child folders such as js , css , iamges and src
+3. Create a manifest file defining the properties of your widget
+4. Create the various js and css scripts and put them in the js and css folder respectively
+5. make the html page that will be displayed on the glass pane of Broplug . Put these in the src folder 
+6. Upload the manifest file into widgets page 

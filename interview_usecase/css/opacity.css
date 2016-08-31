@@ -1,0 +1,10 @@
+#pageContent
+{
+  position: relative;
+  z-index: 2;
+}
+
+#myCanvas {
+    position: absolute;
+    z-index: 0;
+}

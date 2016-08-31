@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+         
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<script src="js/writer.js"></script>
+
+    </head>
+
+    <body>
+
+<!-- header menu section doe configuration pages -->
+<a href=""> <h2> <img src="images/settings.jpg" height="50" width="50"/>Load and View Widgets </h2></a>
+<a href=""> <h2> <img src="images/settings.jpg" height="50" width="50"/>Listing all the media elements </h2></a>		        
+<!-- end header section -->
+
+
+<!-- Loaded Widgets -->
+<div id="ShowWidget">
+<h2> Show Widget </h2>
+
+<h2> --------------------------</h2>
+</div>
+<!-- end loaded widgets -->
+
+<!-- More Market Widgets -->
+<div id="MoreWidget">
+<h2> More Widgets </h2>
+
+<form action="widget_form_action">
+<input type="checkbox" name="widget" value="456">Code Widget<br>
+<input type="checkbox" name="widget" value="457">Draw widget<br>
+<br>
+<input type="button" onclick="myFunction()" value="Send order">
+<br><br>
+<input type="text" id="order" size="50">
+<input type="submit" value="Submit">
+</form>
+
+<h2> --------------------------</h2>
+</div>
+<!-- end More Market widgets -->
+
+<!-- add a widget -->
+<a href="loadwidget.html"> <h2> <img src="images/settings.jpg" height="50" width="50"/>Add a Widget </h2>
+<h2>----------------</h2>
+	
+
+</body>
+
+</html>

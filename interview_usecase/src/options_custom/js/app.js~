@@ -1,0 +1,222 @@
+App = Ember.Application.create({});
+
+//get the values form json file
+/*var posts = (function() {
+
+        var posts= null;
+        $.ajax({
+            'async': false,
+            'global': false,
+            'url': "js/widgetsList.json",
+            'dataType': "json",
+            'success': function (data) {
+                posts = data;
+            }
+
+        });
+        alert("Inside posts "+ posts);
+        return posts;
+    })();*/
+
+var posts= [{
+  "id":"567",
+
+  "version": "2",
+
+  "title": "broplug webrtc v8",
+
+  "author": "altanai",
+
+  "date": "12-24-2012'",
+
+  "description": "Draw plugin for Broplug ",
+
+  "excerpt": "blah blah.",
+  
+  "body": "More blah blah ",
+
+  "icons": [{
+    "icon": "icons/icondefaultdraw.png",
+    "pressedicon": "icons/icondefaultdraw.png",
+  }],
+
+  "main_page_location": "src/drawwindow.html",
+},
+
+{
+  "id":"568",
+
+  "version": "2",
+
+  "title": "broplug webrtc v8",
+
+  "author": "altanai",
+
+  "date": "12-24-2012'",
+
+  "description": "Draw plugin for Broplug ",
+
+  "excerpt": "blah blah.",
+  
+  "body": "More blah blah ",
+
+  "icons": [{
+    "icon": "icons/icondefaultdraw.png",
+    "pressedicon": "icons/icondefaultdraw.png",
+  }],
+
+  "main_page_location": "src/drawwindow.html",
+}
+
+];
+
+// Map hyperlinks
+App.Router.map(function() {
+  this.resource('aboutwidgets');
+  this.resource('aboutbroplug');
+  this.resource('posts', function() {
+    this.resource('post', { path: ':post_id' });
+  });
+  this.resource('uploadwidget');
+});
+
+App.PostsRoute = Ember.Route.extend({
+  model: function() {
+    return posts;
+  }
+});
+
+App.PostRoute = Ember.Route.extend({
+  model: function(params) {
+    return posts.findBy('id', params.post_id);
+  }
+});
+
+App.PostController = Ember.ObjectController.extend({
+  isEditing: false,
+  
+  actions: {
+    edit: function() {
+      this.set('isEditing', true);
+    },
+
+    doneEditing: function() {
+      this.set('isEditing', false);
+    }
+  }
+
+ });
+
+
+var showdown = new Showdown.converter();
+
+Ember.Handlebars.helper('format-markdown', function(input) {
+  return new Handlebars.SafeString(showdown.makeHtml(input));
+});
+
+Ember.Handlebars.helper('format-date', function(date) {
+  return moment(date).fromNow();
+});
+
+// -- File Business 
+/*
+App.IndexController = Ember.ObjectController.extend({
+  suggestedFilename: function() {
+    return this.get("model.title").toLowerCase().replace(/\W+/g, "_") + ".json";
+  }.property("model.title"),
+ 
+  dataURI: function() {
+    return (
+      "data:application/json;charset=UTF-8," +
+      encodeURIComponent(JSON.stringify(this.get("model")))
+    );
+  }.property("model")
+});*/
+
+App.FileSaver = Ember.Object.extend({
+  save: function(fileContents, mimeType, filename) {
+    window.saveAs(new Blob([fileContents], {type: mimeType}), filename);
+  }
+});
+
+App.register('lib:fileSaver', App.FileSaver);
+
+
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    return {
+[{
+  "id":"567",
+
+  "version": "2",
+
+  "title": "broplug webrtc v8",
+
+  "author": "altanai",
+
+  "date": "12-24-2012'",
+
+  "description": "Draw plugin for Broplug ",
+
+  "excerpt": "blah blah.",
+  
+  "body": "More blah blah ",
+
+  "icons": [{
+    "icon": "icons/icondefaultdraw.png",
+    "pressedicon": "icons/icondefaultdraw.png",
+  }],
+
+  "main_page_location": "src/drawwindow.html",
+},
+
+{
+  "id":"568",
+
+  "version": "2",
+
+  "title": "broplug webrtc v8",
+
+  "author": "altanai",
+
+  "date": "12-24-2012'",
+
+  "description": "Draw plugin for Broplug ",
+
+  "excerpt": "blah blah.",
+  
+  "body": "More blah blah ",
+
+  "icons": [{
+    "icon": "icons/icondefaultdraw.png",
+    "pressedicon": "icons/icondefaultdraw.png",
+  }],
+
+  "main_page_location": "src/drawwindow.html",
+}
+
+];
+
+    };
+  }
+});
+
+
+App.IndexController = Ember.ObjectController.extend({
+  suggestedFilename: function() {
+    return this.get("model.title").toLowerCase().replace(/\W+/g, "_") + ".json";
+  }.property("model.title"),
+
+  // Used by FileSaver example only
+  actions: {
+    downloadFile: function() {
+      return this.fileSaver.save(
+        JSON.stringify(this.get("model")),
+        "application/json",
+        this.get("suggestedFilename")
+      );
+    }
+  }
+});
+
+App.inject('controller:index', 'fileSaver', 'lib:fileSaver');

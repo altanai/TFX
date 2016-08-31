@@ -1,0 +1,11 @@
+widget{
+WID:456,
+name:"DrawWidget",
+active:y
+},
+
+Widget{
+WID:457,
+name:"CodeWidget",
+active:y
+}

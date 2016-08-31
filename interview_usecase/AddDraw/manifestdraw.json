@@ -1,0 +1,15 @@
+{
+  "version": 2,
+
+  "name": "broplug webrtc v8",
+
+  "description": "Draw plugin for Broplug ",
+
+  "icons": {
+    "icon": "icons/icondefaultdraw.png",
+    "pressedicon": "icons/icondefaultdraw.png",
+  },
+
+  "main_page_location": "src/drawwindow.html",
+
+}

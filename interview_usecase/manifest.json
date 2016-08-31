@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "broplug webrtc",
+  "description": "WebRTC , Canvas , message , widget , add , remove etc",
+  "version": "1.0",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "browser_action": {
+    "default_icon":  "icons/icon48.png",
+     "default_title": "Broplug Demo"
+   },
+  "default_locale": "en",
+  "background": {
+    "scripts": [ "src/bg/background.js" ],
+    "persistent": false
+  },
+"options_page": "src/options_custom/widgets.html",
+"permissions": ["tabs"],
+  "omnibox": {
+    "keyword": "broplug"
+}
+}

@@ -1,0 +1,23 @@
+body {
+      background-color: #191919;
+}
+
+#menu{
+	background-color: #999999;
+}
+
+#localArea{
+	background-color: #999999;
+}
+
+
+  p {
+    margin: 5px;
+    cursor: pointer;
+  }
+  p:hover {
+    background: yellow;
+  }
+
+
+

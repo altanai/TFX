@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+
+  "name": "broplug webrtc v8",
+
+  "description": "This extension uses chrome.windows API to create Panels and popups for webrtc. It has a overlayscreen for code writing . Intended for Interview purpose. Also has syntax highlighter",
+
+  "version": "1.0",
+
+  "icons": {
+    "icon": "icons/icon16.png",
+    "pressedicon": "icons/icon48.png",
+  },
+
+  "browser_action": {
+    "default_icon":  "icons/icon48.png",
+     "default_title": "Broplug Demo"
+   },
+
+  "default_locale": "en",
+
+  "background": {
+    "scripts": [ "src/bg/background.js" ],
+    "persistent": false
+  },
+
+"options_page": "src/options_custom/index.html",
+
+"permissions": ["tabs"],
+
+"omnibox": {
+    "keyword": "broplug"
+}
+
+}
