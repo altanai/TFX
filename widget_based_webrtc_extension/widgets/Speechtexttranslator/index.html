@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <!-- jquerry -->
+    <script src="../../js/jquery.min.js"></script>
+    <!-- mainhtml css -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+<body>
+  <div class="actionarea">
+    
+    <div id="messagesLogs" class="message_logs_area">
+      <!-- div responsible for text 2 speech conversion from incoming message --> 
+      <div id="text2speechdiv" class="transbox"></div>
+      <div id="messagesCommands" class="message_command_area">
+      <div class="control-holder">
+        <div id="playhal" class="micoff" ></div>
+        <div id="results" style="textboxstyle">
+          <span id="final_span" class="final"></span>
+          <span id="interim_span" class="interim"></span>
+          <div class="message-holder">
+            <input type ="text" id="MessageBox" size="70" class="msgmodetextbox"/>
+            <span><img src="img/send.png"></span>
+          </div>
+        </div>
+        <div id="startrecognition" class ="buttonstyle">
+          <a href="#" id="start_button" > ...</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="language_area">
+      <div class="compact marquee wrapper-1" id="div_language" >
+          <span>Select Language :</span>
+          <select id="select_language"></select>
+          <select id="select_dialect"></select>
+          <!-- checkbox to enable or disable text to speech from incoming messages 
+          <labbel class="readaloud">Read aloud : <input type="checkbox" id="text2speechCheckbox" /></labbel>-->
+          
+          <div class="switch readaloud floatRight">
+             <input id="text2speechCheckbox" class="cmn-toggle cmn-toggle-round" type="checkbox">
+            <label for="text2speechCheckbox"></label>
+          </div>
+          <label class="floatRight">Read aloud :</label>
+      </div>
+    </div>
+    
+    </div>
+</body>
+  <!-- <script src="../js/hal.js" type="text/javascript"></script> -->
+  <script src="js/sync.js" type="text/javascript"></script>
+</html>

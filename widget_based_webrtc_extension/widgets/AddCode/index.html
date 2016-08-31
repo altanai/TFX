@@ -1,0 +1,74 @@
+<html>
+<head>
+  <!-- jquerry -->
+  <script src="../../js/jquery.min.js"></script>
+
+  <!-- syntax highlighter -->
+  <link rel="stylesheet" href="js/codemirror/theme/mdn-like.css">
+  <link rel="stylesheet" href="js/codemirror/lib/codemirror.css"  />
+  
+  <script src="js/codemirror/lib/codemirror.js"></script>
+
+  <script src="js/codemirror/addon/selection/active-line.js"></script>
+  <script src="js/codemirror/addon/mode/loadmode.js"></script>
+  <script src="js/codemirror/mode/meta.js"></script>
+
+  <link href="css/style.css" rel="stylesheet" type="text/css" >
+
+</head>
+
+<!-- <body style="background-color:transparent"> -->
+<body>
+
+<div id="supercontainer" class="CodeMirror">
+
+  <div class="wrapper-1">
+      <span>Select Language :</span>
+      <select id="CodeStyles"> 
+         <option mime="text/x-csrc" mode="clike" value="1">C</option>
+         <option mime="text/x-c++src" mode="clike" value="2">C++</option> 
+         <option mime="text/x-csharp" mode="clike" value="3">C#</option>
+         <option mime="text/x-coffeescript" mode="clike" value="3">CoffeeScript</option> 
+         <option mime="text/css" mode="css" value="4">CSS</option> 
+         <option mime="application/x-ejs" mode="htmlembedded" value="5">Embedded Javascript</option> 
+         <option mime="text/x-erlang" mode="erlang" value="6">Erlang</option> 
+         <option mime="text/x-gfm" mode="gfm" value="6">GitHub Flavored Markdown</option> 
+         <option mime="text/x-go" mode="go" value="6">Go</option> 
+         <option mime="text/x-groovy" mode="groovy" value="7">Groovy</option> 
+         <option mime="text/x-haml" mode="haml" value="8">HAML</option> 
+         <option mime="text/x-haskell" mode="haskell" value="9">Haskell</option> 
+         <option mime="text/x-haxe" mode="haxe" value="10">Haxe</option> 
+         <option mime="application/x-aspx" mode="htmlembedded" value="11">ASP.NET</option> 
+         <option mime="text/html" mode="htmlmixed" value="12">HTML</option> 
+         <option mime="text/jade" mode="jade" value="13">Jade</option>  
+         <option mime="text/java" mode="clike" value="14">Java</option> 
+         <option mime="application/x-jsp" mode="htmlembedded" value="15">Java Server Pages</option>
+         <option mime="text/javascript" mode="javascript" value="16">Javascript</option>  
+         <option mime="application/json" mode="javascript" value="17">JSON</option> 
+      </select>
+      
+  </div>
+
+  <div class="code-area" style="height:80%!important;">
+      <textarea id="codeArea" name="code" >
+
+var x = document.getElementById("main");
+var y = x.getElementsByTagName("p");
+function myFunction() {
+    var myGirls = ["Cecilie", "Lone"];
+    var myBoys = ["Emil", "Tobias", "Linus"];
+    var myChildren = myGirls.concat(myBoys);
+    document.getElementById("demo").innerHTML = myChildren;
+}
+      </textarea>
+  </div>
+
+
+</div>
+
+  <script src="codeStyles.js"></script>
+  <script src="js/codemirror/mode/javascript/javascript.js"></script>
+  <script src="js/codesync.js"></script>
+
+</body>
+</html>

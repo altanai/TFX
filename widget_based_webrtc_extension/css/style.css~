@@ -1,0 +1,157 @@
+body{
+	padding-top: 70px;
+}
+a:hover{
+	text-decoration: none;
+}
+a, a:focus, a:active, .btn:focus, .btn:active{
+	outline: none;
+}
+iframe{
+	width: 100%;
+	height: 100%;
+	border: none;
+	background-color: transparent;
+}
+
+.navbar-default{
+	background-color: rgba(0,0,0,.8);
+	border: none;
+}
+.logo{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+.home_outer{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	display: table;
+}
+.home_middle{
+	display: table-cell;
+	vertical-align: middle;
+}
+.home_inner{
+	margin: 0 auto;
+	width: 350px;
+	border-radius: 10px;
+	text-align: center;
+	padding: 15px;
+	background-color: red;
+	height: 100px;
+}
+.home_txt{
+	width: 260px;
+	text-align: left;
+}
+.tango-btn{
+	background-color: orange;
+	border: none;
+}
+.tango-input{
+	background-color: #fff;
+	border: none;
+	box-shadow: none;
+	border-radius: 0px;
+	width: 100px;
+}
+.tango-nav-btn{
+	margin-right: 15px;
+}
+.help_btn{
+	background: url("../img/help.png") no-repeat;
+	margin-top: 13px;
+}
+.help_btn:hover{
+	background: url("../img/help_hover.png") no-repeat;
+}
+
+.camera_btn{
+	background: url("../img/video_on.png") no-repeat;
+	margin-top: 18px;
+}
+.camera_btn:hover{
+	background: url("../img/video_off.png") no-repeat;
+	margin-top: 15px;
+}
+.audio_btn{
+	background: url("../img/audio_on.png") no-repeat;
+	margin-top: 13px;
+}
+.audio_btn:hover{
+	background: url("../img/audio_off.png") no-repeat;
+}
+.logoff_btn{
+	background: url("../img/powerOff.png") no-repeat;
+	margin-top: 13px;
+	cursor: pointer;
+}
+.navbar-text{
+	color: #fff !important;
+}
+.widget-column{
+	width: 70px;
+	position: absolute;
+	top: 0;
+	padding-top: 50px;
+	left: 0;
+	height: 100%;
+}
+#widget_loader{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	top: -3px;
+	padding-top: 50px;
+	padding-left: 70px;
+}	
+.widget-container{
+	height: 100%;
+	position: relative;
+	background-color: rgba(0,0,0,.8);
+}
+.widget-container a{
+	height: 50px;
+}
+.widget-container .nav>li>a:focus,.widget-container .nav>li>a:hover{
+	background-color: transparent;
+}
+.AddCode{
+	background:url('chrome-extension://__MSG_@@extension_id__/widgets/AddCode/img/code.png') no-repeat center;
+}
+.AddCode_selected, .AddCode:hover{
+	background:url('chrome-extension://__MSG_@@extension_id__/widgets/AddCode/img/code_hover.png') no-repeat center;
+}
+.AddDraw{
+	background:url('chrome-extension://__MSG_@@extension_id__/widgets/AddDraw/img/draw.png') no-repeat center;
+}
+.AddDraw_selected, .AddDraw:hover{
+	background:url('chrome-extension://__MSG_@@extension_id__/widgets/AddDraw/img/draw_hover.png') no-repeat center;
+}
+
+/* Participent window*/
+#videoContent{
+    position: absolute;
+    top: 0;
+    right: 0;
+    -webkit-user-drag: element;
+}
+#localVideo{
+    width: 200px;
+    background-color: #000;
+}
+video, canvas{
+	vertical-align: top;
+}
+#myCanvas{
+	position: absolute;
+	top: 0;
+	left: 0;
+}

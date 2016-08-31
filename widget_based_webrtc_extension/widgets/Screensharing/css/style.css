@@ -1,0 +1,56 @@
+body 
+{
+padding: 0; margin: 0; overflow: hidden;
+}
+
+
+
+.screensharevideoarea 
+{
+
+  width: 200px;
+  height: 200px;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+
+}
+
+#start{
+  padding: 10px 20px;
+  top: 140px;
+  background-color: rgba(0,0,0,.8);
+  color: #fff;
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  left: 0px;
+  position: absolute;
+}
+
+.screensharevideoareapeer 
+{
+  
+   width: 200px;
+  height: 200px;
+  border: 1px solid #e2e2e2;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.2);
+
+}
+
+
+
+.screenshareContainerarea
+{
+
+  padding-left: 60px;
+
+}
+
+
+
+#screensharingremotes video
+{
+
+  height:100%;
+
+}

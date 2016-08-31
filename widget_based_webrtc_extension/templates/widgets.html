@@ -1,0 +1,33 @@
+<div class="large-12 columns" >
+	<div class="row">
+		<!--<canvas id="myCanvas" ></canvas>
+		 ....................... area for other participants window 
+	    <div id="videoContent">
+	      <div id="localArea" align="right">
+	        
+	        <div id="remotes"></div>
+	        
+	        <div id="localVideoContainer" class="videoContainer">
+	              <video id="localVideo"></video>
+	          </div>
+	          
+	      </div>
+	    </div>-->
+	    <!-- Widget Loader -->
+		<div id="widget_loader">
+			<!--<iframe ng-repeat="widget in widgets" src="{{'widgets/'+widget.path+'/index.html'}}"></iframe>-->
+		</div>
+
+		<!-- Widget Panel -->
+		<div class="widget-column">
+			<div class="widget-container">
+				<ul class="nav">
+					<li ng-repeat="widget in widgets">
+						<a ng-click="linkClickHandler(widget, $index)" class="{{widget.path}} {{currentWidget == $index ? widget.path+'_selected' : ''}}"></a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		
+	</div>
+</div>
