@@ -1,2 +1,4 @@
-tfx_chromeextension/node_modules/
-tfx_webserver/node_modules/
+tfx_chromeextension/node_modules
+tfx_webserver/node_modules
+tfx_signaller/node_modules
+tfx_module/node_modules

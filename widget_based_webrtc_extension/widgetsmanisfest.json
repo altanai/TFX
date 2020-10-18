@@ -1,43 +1,42 @@
 [
-{
-"plugintype": "draw",
-"id" 	:"Draw",
-"type" 	: "draw",
-"title" : "Code widget",
-"resize": "no",
-"icon" 	: "img/draw.png", 
-"selectedicon":"img/draw_hover.png",
-"path":"AddDraw"
-},
-{
-"plugintype": "code",
-"id" 	:"LiveCode",
-"type" 	: "code",
-"title" : "Code widget",
-"resize": "no",
-"icon" 	: "img/code.png", 
-"selectedicon":"img/code_hover.png",
-"path":"AddCode"
-},
-
-{
-"plugintype": "screensharing",
-"id"   : "Screen sharing",
-"type" : "screensharing",
-"title": "screen sharing widget",
-"resize": "no",
-"icon" 	: "img/screen.png", 
-"selectedicon":"img/screen_hover.png",
-"path":"Screensharing"
-},
-{
-"plugintype": "speechtexttranslator",
-"id"   : "Speechtext Translator",
-"type" : "speechtexttranslator",
-"title": "speech and text Translator widget",
-"resize": "no",
-"icon" 	: "img/speech.png", 
-"selectedicon":"img/speech_hover.png",
-"path":"Speechtexttranslator"
-}
+  {
+    "plugintype": "draw",
+    "id": "Draw",
+    "type": "draw",
+    "title": "Code widget",
+    "resize": "no",
+    "icon": "img/draw.png",
+    "selectedicon": "img/draw_hover.png",
+    "path": "AddDraw"
+  },
+  {
+    "plugintype": "code",
+    "id": "LiveCode",
+    "type": "code",
+    "title": "Code widget",
+    "resize": "no",
+    "icon": "img/code.png",
+    "selectedicon": "img/code_hover.png",
+    "path": "AddCode"
+  },
+  {
+    "plugintype": "screensharing",
+    "id": "Screen sharing",
+    "type": "screensharing",
+    "title": "screen sharing widget",
+    "resize": "no",
+    "icon": "img/screen.png",
+    "selectedicon": "img/screen_hover.png",
+    "path": "Screensharing"
+  },
+  {
+    "plugintype": "speechtexttranslator",
+    "id": "Speechtext Translator",
+    "type": "speechtexttranslator",
+    "title": "speech and text Translator widget",
+    "resize": "no",
+    "icon": "img/speech.png",
+    "selectedicon": "img/speech_hover.png",
+    "path": "Speechtexttranslator"
+  }
 ]
