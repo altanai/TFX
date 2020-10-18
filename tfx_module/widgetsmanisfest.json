@@ -1,46 +1,46 @@
 [
-{
-"plugintype": "draw",
-"id" 	:"Draw",
-"type" 	: "draw",
-"title" : "Drawing widget",
-"resize": "no",
-"icon" 	: "widgets/AddDraw/img/draw.png", 
-"selectedicon":"widgets/AddDraw/img/draw_hover.png",
-"path":"AddDraw",
-"persistance": "true"
-},
-{
-"plugintype": "code",
-"id" 	:"LiveCode",
-"type" 	: "code",
-"title" : "Code widget",
-"resize": "no",
-"icon" 	: "widgets/AddCode/img/code.png", 
-"selectedicon":"widgets/AddCode/img/code_hover.png",
-"path":"AddCode",
-"persistance": "true"
-},
-{
-"plugintype": "screensharing",
-"id"   : "Screen sharing",
-"type" : "screensharing",
-"title": "Screen Sharing Widget",
-"resize": "no",
-"icon" 	: "widgets/Screensharing/img/screen.png", 
-"selectedicon":"widgets/ScreenSharing/img/screen_hover.png",
-"path":"Screensharing",
-"persistance": "false"
-},
-{
-"plugintype": "speechtexttranslator",
-"id"   : "Speechtext Translator",
-"type" : "speechtexttranslator",
-"title": "Speech and Text Translator chat Widget",
-"resize": "no",
-"icon" 	: "widgets/Speechtexttranslator/img/speech.png", 
-"selectedicon":"widgets/Speechtexttranslator/img/speech_hover.png",
-"path":"Speechtexttranslator",
-"persistance": "true"
-}
+  {
+    "plugintype": "draw",
+    "id": "Draw",
+    "type": "draw",
+    "title": "Drawing widget",
+    "resize": "no",
+    "icon": "widgets/AddDraw/img/draw.png",
+    "selectedicon": "widgets/AddDraw/img/draw_hover.png",
+    "path": "AddDraw",
+    "persistance": "true"
+  },
+  {
+    "plugintype": "code",
+    "id": "LiveCode",
+    "type": "code",
+    "title": "Code widget",
+    "resize": "no",
+    "icon": "widgets/AddCode/img/code.png",
+    "selectedicon": "widgets/AddCode/img/code_hover.png",
+    "path": "AddCode",
+    "persistance": "true"
+  },
+  {
+    "plugintype": "screensharing",
+    "id": "Screen sharing",
+    "type": "screensharing",
+    "title": "Screen Sharing Widget",
+    "resize": "no",
+    "icon": "widgets/Screensharing/img/screen.png",
+    "selectedicon": "widgets/ScreenSharing/img/screen_hover.png",
+    "path": "Screensharing",
+    "persistance": "false"
+  },
+  {
+    "plugintype": "speechtexttranslator",
+    "id": "Speechtext Translator",
+    "type": "speechtexttranslator",
+    "title": "Speech and Text Translator chat Widget",
+    "resize": "no",
+    "icon": "widgets/Speechtexttranslator/img/speech.png",
+    "selectedicon": "widgets/Speechtexttranslator/img/speech_hover.png",
+    "path": "Speechtexttranslator",
+    "persistance": "true"
+  }
 ]
