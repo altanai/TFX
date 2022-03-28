@@ -9,31 +9,31 @@ function SimpleWebRTC(opts) {
     var self = this;
     var options = opts || {};
     var config = this.config = {
-            url: 'https://sandbox.simplewebrtc.com:443/',
-            socketio: {/* 'force new connection':true*/},
-            connection: null,
-            debug: false,
-            localVideoEl: '',
-            remoteVideosEl: '',
-            enableDataChannels: true,
-            autoRequestMedia: false,
-            autoRemoveVideos: true,
-            adjustPeerVolume: false,
-            peerVolumeWhenSpeaking: 0.25,
-            media: {
-                video: true,
-                audio: true
-            },
-            receiveMedia: {
-                offerToReceiveAudio: 1,
-                offerToReceiveVideo: 1
-            },
-            localVideo: {
-                autoplay: true,
-                mirror: true,
-                muted: true
-            }
-        };
+        url: 'https://sandbox.simplewebrtc.com:443/',
+        socketio: {/* 'force new connection':true*/},
+        connection: null,
+        debug: false,
+        localVideoEl: '',
+        remoteVideosEl: '',
+        enableDataChannels: true,
+        autoRequestMedia: false,
+        autoRemoveVideos: true,
+        adjustPeerVolume: false,
+        peerVolumeWhenSpeaking: 0.25,
+        media: {
+            video: true,
+            audio: true
+        },
+        receiveMedia: {
+            offerToReceiveAudio: 1,
+            offerToReceiveVideo: 1
+        },
+        localVideo: {
+            autoplay: true,
+            mirror: true,
+            muted: true
+        }
+    };
     var item, connection;
 
     // We also allow a 'logger' option. It can be any object that implements
@@ -47,8 +47,8 @@ function SimpleWebRTC(opts) {
         if (opts.debug) {
             return opts.logger || console;
         } else {
-        // or we'll use your logger which should have its own logic
-        // for output. Or we'll return the no-op.
+            // or we'll use your logger which should have its own logic
+            // for output. Or we'll return the no-op.
             return opts.logger || mockconsole;
         }
     }();
@@ -196,7 +196,9 @@ function SimpleWebRTC(opts) {
             el = document.createElement('video'),
             container = self.getRemoteVideoContainer();
 
-        el.oncontextmenu = function () { return false; };
+        el.oncontextmenu = function () {
+            return false;
+        };
         el.id = 'localScreen';
         attachMediaStream(stream, el);
         if (container) {
@@ -385,15 +387,19 @@ SimpleWebRTC.prototype.stopLocalVideo = function () {
 SimpleWebRTC.prototype.getLocalVideoContainer = function () {
     var el = this.getEl(this.config.localVideoEl);
     if (el && el.tagName === 'VIDEO') {
-        el.oncontextmenu = function () { return false; };
+        el.oncontextmenu = function () {
+            return false;
+        };
         return el;
     } else if (el) {
         var video = document.createElement('video');
-        video.oncontextmenu = function () { return false; };
+        video.oncontextmenu = function () {
+            return false;
+        };
         el.appendChild(video);
         return video;
     } else {
-        return;
+
     }
 };
 
@@ -423,7 +429,9 @@ SimpleWebRTC.prototype.stopScreenShare = function () {
     // element that we want
     if (videoEl) this.emit('videoRemoved', videoEl);
     if (stream) {
-        stream.getTracks().forEach(function (track) { track.stop(); });
+        stream.getTracks().forEach(function (track) {
+            track.stop();
+        });
     }
     this.webrtc.peers.forEach(function (peer) {
         if (peer.broadcaster) {
